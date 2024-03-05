@@ -1,0 +1,32 @@
+trigger:
+  branches:
+    include:
+      - master
+      - main
+  paths:
+    exclude:
+      - .pipelines/*
+
+pr:
+  branches:
+    include:
+      - '*'
+  paths:
+    exclude:
+      - .pipelines/*
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+parameters:
+  - name: skipE2eTests
+    type: boolean
+    default: false
+
+variables:
+  - template: ../config.yml
+    parameters:
+      skipE2eTests: ${{ parameters.skipE2eTests }}
+
+jobs:
+  - template: templates/build.yml

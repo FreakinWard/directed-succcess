@@ -1,0 +1,15 @@
+# ignore all files
+**/*
+
+# include only production files
+!/.deployment
+!/.npmrc
+!/load-appInsights.js
+!/next-env.d.ts
+!/next.config.js
+!/package-lock.json
+!/package.json
+!/public
+!/src
+!/styles
+!/tsconfig.json

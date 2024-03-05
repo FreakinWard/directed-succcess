@@ -1,0 +1,102 @@
+trigger:
+  batch: true
+  branches:
+    include:
+      - master
+      - main
+
+  paths:
+    include:
+      - .pipelines/*
+
+pr:
+  paths:
+    include:
+      - .pipelines/*
+
+parameters:
+  - name: manualDeployment
+    displayName: Manual Deployment
+    type: string
+    default: no-deployment
+    values:
+      - no-deployment
+      - dev-only
+      - full-ci
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  - template: ../config.yml
+    parameters:
+      manualDeployment: ${{ parameters.manualDeployment }}
+
+stages:
+  - stage: Validate
+    jobs:
+      - template: templates/validate.yml
+        parameters:
+          serviceConnection: $(serviceConnection)
+          environmentTypes:
+            - Dev
+          regions:
+            - East
+
+      - template: templates/validate.yml
+        parameters:
+          serviceConnection: $(serviceConnection)
+          environmentTypes:
+            - QA
+          regions:
+            - East
+            - West
+
+      - template: templates/validate.yml
+        parameters:
+          serviceConnection: $(serviceConnection)
+          environmentTypes:
+            - Prod
+          regions:
+            - East
+            - West
+
+  - stage: stageDeployDev
+    displayName: Dev
+    condition: and(succeeded(), or(eq(variables.isCI, 'True'), eq(variables.isDevOnly, 'True'), eq(variables.isFullCI, 'True') ))
+    jobs:
+      - template: templates/deploy.yml
+        parameters:
+          serviceConnection: $(serviceConnection)
+          environmentTypes:
+            - Dev
+          regions:
+            - East
+
+  - stage: stageDeployQA
+    displayName: QA
+    dependsOn: stageDeployDev
+    #    condition: and(succeeded(), or(eq(variables.isCI, 'True'), eq(variables.isDevOnly, 'True'), eq(variables.isFullCI, 'True') ))
+    condition: false # TODO: remove when ready for multiple environments
+    jobs:
+      - template: templates/deploy.yml
+        parameters:
+          serviceConnection: $(serviceConnection)
+          environmentTypes:
+            - QA
+          regions:
+            - East
+            - West
+
+  - stage: stageDeployProd
+    displayName: Prod
+    dependsOn: stageDeployQA
+    jobs:
+      - template: templates/deploy.yml
+        parameters:
+          serviceConnection: $(serviceConnection)
+          environmentTypes:
+            - Prod
+          regions:
+            - East
+            - West

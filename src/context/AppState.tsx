@@ -1,11 +1,9 @@
 import { NextRouter } from 'next/router';
 import { Session } from 'next-auth';
-import { SessionProvider } from 'next-auth/react';
 import { ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { TelemetryProvider } from '../components/AppTelemetry/TelemetryProvider';
-import AuthGuard from '../components/AuthGuard';
 
 interface Props {
   children: ReactNode;
@@ -22,7 +20,7 @@ if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
   void setupMsw();
 }
 
-export default function AppState({ children, pageTitle, requireAuth, router, session }: Props) {
+export default function AppState({ children, pageTitle, router }: Props) {
   const queryConfig = {
     defaultOptions: {
       queries: {
@@ -34,12 +32,8 @@ export default function AppState({ children, pageTitle, requireAuth, router, ses
   const queryClient = new QueryClient(queryConfig);
 
   return (
-    <SessionProvider session={session}>
-      <TelemetryProvider router={router} pageTitle={pageTitle}>
-        <QueryClientProvider client={queryClient}>
-          <AuthGuard requireAuth={requireAuth}>{children}</AuthGuard>
-        </QueryClientProvider>
-      </TelemetryProvider>
-    </SessionProvider>
+    <TelemetryProvider router={router} pageTitle={pageTitle}>
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    </TelemetryProvider>
   );
 }

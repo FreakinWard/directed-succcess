@@ -1,6 +1,6 @@
 /* istanbul ignore file */ // TODO: determine a way to test
-
-import '../../styles/globals.css';
+import '../../styles/index.css';
+import '../../styles/app.css';
 
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app';

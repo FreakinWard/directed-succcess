@@ -13,6 +13,7 @@ module.exports = withBundleAnalyzer({
     appVersion: packageJson.version,
     ciBuildNumber: packageJson.buildNumber,
     APPLICATIONINSIGHTS_CONNECTION_STRING: process.env.APPLICATIONINSIGHTS_CONNECTION_STRING,
+    strapiApiGraphql: process.env.STRAPI_API_GRAPHQL,
   },
   output: 'standalone',
   swcMinify: true,

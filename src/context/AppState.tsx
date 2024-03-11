@@ -1,9 +1,11 @@
+import { DehydratedState, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { NextRouter } from 'next/router';
 import { Session } from 'next-auth';
 import { ReactNode } from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
 
-import { TelemetryProvider } from '../components/AppTelemetry/TelemetryProvider';
+import { TelemetryProvider } from '@/components/AppTelemetry/TelemetryProvider';
+
+import QueryCache from './QueryCache';
 
 interface Props {
   children: ReactNode;
@@ -11,6 +13,7 @@ interface Props {
   requireAuth: boolean;
   router: NextRouter;
   session: Session;
+  dehydratedState?: DehydratedState;
 }
 
 /* istanbul ignore next */
@@ -20,7 +23,7 @@ if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
   void setupMsw();
 }
 
-export default function AppState({ children, pageTitle, router }: Props) {
+export default function AppState({ children, pageTitle, router, dehydratedState }: Props) {
   const queryConfig = {
     defaultOptions: {
       queries: {
@@ -33,7 +36,9 @@ export default function AppState({ children, pageTitle, router }: Props) {
 
   return (
     <TelemetryProvider router={router} pageTitle={pageTitle}>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <QueryCache dehydratedState={dehydratedState}>
+        <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      </QueryCache>
     </TelemetryProvider>
   );
 }

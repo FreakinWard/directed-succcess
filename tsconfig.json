@@ -14,7 +14,13 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": false,
-    "target": "es2017"
+    "target": "es2017",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/core/*": ["core/*"],
+      "@/models/*": ["models/*"],
+      "@/hooks/*": ["hooks/*"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "cypress.config.ts"]

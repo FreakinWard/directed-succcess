@@ -22,4 +22,9 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/no-explicit-any': 'error',
   },
+  settings: {
+    'import/resolver': {
+      typescript: {},
+    },
+  },
 };

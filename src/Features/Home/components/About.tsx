@@ -1,17 +1,25 @@
-import { About } from '../../../Models/LandingPageData';
+import Image from 'next/image';
 
-interface AboutProps {
-  about: About;
-}
+import useAbout from '../../hooks/useAbout';
 
-export default function About({ about }: AboutProps) {
+const WhyList = ({ whys }) => {
+  return <ul>{whys?.map((why, index) => <li key={`${why}-${index}`}>{why}</li>)}</ul>;
+};
+
+export default function About() {
+  const { data: about } = useAbout();
+
   return (
     <div id="about">
       <div className="container">
         <div className="row">
           <div className="col-xs-12 col-md-6">
-            {' '}
-            <img src="img/about.jpg" className="img-responsive" alt="" />{' '}
+            <Image
+              src={about?.image.url}
+              width={about?.image.width}
+              height={about?.image.height}
+              alt="About Image"
+            />
           </div>
           <div className="col-xs-12 col-md-6">
             <div className="about-text">
@@ -19,18 +27,10 @@ export default function About({ about }: AboutProps) {
               <h3>Why Choose Us?</h3>
               <div className="list-style">
                 <div className="col-lg-6 col-sm-6 col-xs-12">
-                  <ul>
-                    {about.Why.map((d, i) => (
-                      <li key={`${d}-${i}`}>{d}</li>
-                    ))}
-                  </ul>
+                  <WhyList whys={about?.whys} />
                 </div>
                 <div className="col-lg-6 col-sm-6 col-xs-12">
-                  <ul>
-                    {about.Why2.map((d, i) => (
-                      <li key={`${d}-${i}`}> {d}</li>
-                    ))}
-                  </ul>
+                  <WhyList whys={about?.whys2} />
                 </div>
               </div>
             </div>

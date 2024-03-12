@@ -4,9 +4,9 @@ export default async function graphQLRequest<T = unknown>(
   document: RequestDocument,
   variables?: Variables
 ) {
-  const strapiApi = process.env.strapiApiGraphql;
+  const strapiApiGraphQL = `${process.env.strapiApi}/graphql`;
 
-  const graphQLClient = new GraphQLClient(strapiApi, {
+  const graphQLClient = new GraphQLClient(strapiApiGraphQL, {
     headers: { 'Content-Type': 'application/json' },
   });
 

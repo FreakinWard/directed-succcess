@@ -13,6 +13,7 @@ module.exports = withBundleAnalyzer({
     appVersion: packageJson.version,
     ciBuildNumber: packageJson.buildNumber,
     APPLICATIONINSIGHTS_CONNECTION_STRING: process.env.APPLICATIONINSIGHTS_CONNECTION_STRING,
+    strapiApi: process.env.STRAPI_API,
     strapiApiGraphql: process.env.STRAPI_API_GRAPHQL,
   },
   output: 'standalone',
@@ -22,5 +23,15 @@ module.exports = withBundleAnalyzer({
   },
   typescript: {
     ignoreBuildErrors: isProduction,
+  },
+
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: '127.0.0.1',
+        port: '1337',
+      },
+    ],
   },
 });

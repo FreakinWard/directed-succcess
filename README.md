@@ -34,6 +34,9 @@ NEXTAUTH_SECRET=hUZffSRxfqTsXF/08mFxO/T1p0pq2c5pXuZQ82CkSAU=
 
 GITHUB_ID=visit-https://github.com/settings/applications/1778388
 GITHUB_SECRET=visit-https://github.com/settings/applications/1778388
+
+# local development
+STRAPI_API=http://127.0.0.1:1337
 ```
 
 Next, install packages:

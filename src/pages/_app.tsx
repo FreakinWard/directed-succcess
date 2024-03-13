@@ -27,6 +27,7 @@ export default function App({ Component, pageProps, router }: Props) {
       requireAuth={Component.requireAuth}
       router={router}
       session={pageProps.session}
+      dehydratedState={pageProps.dehydratedState}
     >
       <Layout>
         <AppHead title={Component.title} />

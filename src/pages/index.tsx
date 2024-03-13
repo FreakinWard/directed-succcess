@@ -1,7 +1,11 @@
+import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 import { InferGetStaticPropsType } from 'next';
 
+import graphQLRequest from '@/core/utils/graphQLRequest';
+import { LandingPageData } from '@/models/LandingPageData';
+
 import HomePage from '../Features/Home/';
-import { LandingPageData } from '../Models/LandingPageData';
+import { graphQuery as aboutQuery } from '../Features/hooks/useAbout';
 
 const landingPageData = {
   header: {
@@ -188,13 +192,24 @@ const landingPageData = {
 interface Props {
   props: {
     landingPageData: LandingPageData;
+    dehydratedState: DehydratedState;
   };
 }
 
 export async function getStaticProps(): Promise<Props> {
+  const queryClient = new QueryClient();
+
+  await Promise.all([
+    queryClient.prefetchQuery({
+      queryKey: ['about'],
+      queryFn: () => graphQLRequest(aboutQuery),
+    }),
+  ]);
+
   return {
     props: {
       landingPageData,
+      dehydratedState: dehydrate(queryClient),
     },
   };
 }

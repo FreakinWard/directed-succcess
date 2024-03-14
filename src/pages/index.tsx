@@ -6,6 +6,7 @@ import { LandingPageData } from '@/models/strapi/LandingPageData';
 
 import HomePage from '../Features/Home/';
 import { graphQuery as aboutQuery } from '../Features/hooks/useAbout';
+import { graphQuery as headerQuery } from '../Features/hooks/useHeader';
 
 const landingPageData = {
   header: {
@@ -203,6 +204,10 @@ export async function getStaticProps(): Promise<Props> {
     queryClient.prefetchQuery({
       queryKey: ['about'],
       queryFn: () => graphQLRequest(aboutQuery),
+    }),
+    queryClient.prefetchQuery({
+      queryKey: ['header'],
+      queryFn: () => graphQLRequest(headerQuery),
     }),
   ]);
 

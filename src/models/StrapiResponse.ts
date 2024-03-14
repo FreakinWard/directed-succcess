@@ -8,3 +8,8 @@ export interface AboutResponse {
   whys: string[];
   whys2: string[];
 }
+
+export interface HeaderData {
+  paragraph: string;
+  title: string;
+}

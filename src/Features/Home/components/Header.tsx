@@ -1,10 +1,8 @@
-import { Header as HeaderType } from '@/models/strapi/LandingPageData';
+import useHeader from '../../hooks/useHeader';
 
-interface HeaderProps {
-  header: HeaderType;
-}
+export default function Header() {
+  const { data: header } = useHeader();
 
-export default function Header({ header }: HeaderProps) {
   return (
     <header id="header">
       <div className="intro">
@@ -13,13 +11,13 @@ export default function Header({ header }: HeaderProps) {
             <div className="row">
               <div className="col-md-8 col-md-offset-2 intro-text">
                 <h1>
-                  {header.title}
+                  {header?.title}
                   <span></span>
                 </h1>
-                <p>{header.paragraph}</p>
+                <p>{header?.paragraph}</p>
                 <a href="#features" className="btn btn-custom btn-lg page-scroll">
                   Learn More
-                </a>{' '}
+                </a>
               </div>
             </div>
           </div>

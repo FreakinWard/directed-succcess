@@ -18,7 +18,7 @@ export default function Home({ landingPageData }: Props) {
   return (
     <div>
       <Navigation />
-      <Header header={landingPageData.header} />
+      <Header />
       <Features features={landingPageData.features} />
       <About />
       <Services services={landingPageData.services} />

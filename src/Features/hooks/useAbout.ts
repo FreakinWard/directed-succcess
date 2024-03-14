@@ -1,6 +1,7 @@
 import { gql } from 'graphql-request';
 
 import useGraphQl from '@/hooks/useGraphQl';
+import { AboutResponse } from '@/models/StrapiResponse';
 
 export const graphQuery = gql`
   query About {
@@ -59,7 +60,7 @@ const adapter = data => {
 };
 
 export default function useAbout() {
-  return useGraphQl({
+  return useGraphQl<AboutResponse>({
     queryKey: ['about'],
     select: adapter,
     graphQuery,

@@ -42,12 +42,6 @@ export interface Contact {
   youtube: string;
 }
 
-export interface Features {
-  icon: string;
-  title: string;
-  text: string;
-}
-
 export interface LandingPageData {
   header: Header;
   about: About;
@@ -56,5 +50,4 @@ export interface LandingPageData {
   testimonials: Testimonials[];
   team: Team[];
   contact: Contact;
-  features: Features[];
 }

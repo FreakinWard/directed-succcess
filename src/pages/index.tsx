@@ -2,7 +2,7 @@ import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 import { InferGetStaticPropsType } from 'next';
 
 import graphQLRequest from '@/core/utils/graphQLRequest';
-import { LandingPageData } from '@/models/LandingPageData';
+import { LandingPageData } from '@/models/strapi/LandingPageData';
 
 import HomePage from '../Features/Home/';
 import { graphQuery as aboutQuery } from '../Features/hooks/useAbout';

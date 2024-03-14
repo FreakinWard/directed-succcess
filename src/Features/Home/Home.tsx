@@ -1,4 +1,5 @@
-import { LandingPageData } from '../../Models/LandingPageData';
+import { LandingPageData } from '@/models/strapi/LandingPageData';
+
 import About from './components/About';
 import Contact from './components/Contact';
 import Features from './components/Features';
@@ -19,7 +20,7 @@ export default function Home({ landingPageData }: Props) {
       <Navigation />
       <Header header={landingPageData.header} />
       <Features features={landingPageData.features} />
-      <About about={landingPageData.about} />
+      <About />
       <Services services={landingPageData.services} />
       <Gallery gallery={landingPageData.gallery} />
       <Testimonials testimonials={landingPageData.testimonials} />

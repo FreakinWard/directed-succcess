@@ -1,4 +1,4 @@
-import { Testimonials as TestimonialsType } from '../../../Models/LandingPageData';
+import { Testimonials as TestimonialsType } from '@/models/strapi/LandingPageData';
 
 interface TestimonialsProps {
   testimonials: TestimonialsType[];

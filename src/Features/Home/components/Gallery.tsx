@@ -1,4 +1,5 @@
-import { Gallery as GalleryType } from '../../../Models/LandingPageData';
+import { Gallery as GalleryType } from '@/models/strapi/LandingPageData';
+
 import Image from './Image';
 
 interface GalleryProps {

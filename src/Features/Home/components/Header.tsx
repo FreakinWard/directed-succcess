@@ -1,4 +1,4 @@
-import { Header as HeaderType } from '../../../Models/LandingPageData';
+import { Header as HeaderType } from '@/models/strapi/LandingPageData';
 
 interface HeaderProps {
   header: HeaderType;

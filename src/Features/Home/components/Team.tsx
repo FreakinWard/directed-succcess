@@ -1,4 +1,4 @@
-import { Team } from '../../../Models/LandingPageData';
+import { Team } from '@/models/strapi/LandingPageData';
 
 interface TeamProps {
   team: Team[];

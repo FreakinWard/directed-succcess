@@ -1,4 +1,4 @@
-import { Services as ServicesType } from '../../../Models/LandingPageData';
+import { Services as ServicesType } from '@/models/strapi/LandingPageData';
 
 interface ServicesProps {
   services: ServicesType[];

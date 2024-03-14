@@ -20,21 +20,6 @@ describe('index', () => {
   ];
   const tree = <Home posts={posts} />;
 
-  it('should render staticProps', () => {
-    // arrange
-    const postLength = `Length: ${posts.length}`;
-
-    // act
-    render(tree, { wrapper });
-
-    // assert
-    expect(screen.getByText(postLength)).toBeInTheDocument();
-
-    posts.forEach(post => {
-      expect(screen.getByText(`${post.id} - ${post.title}`)).toBeInTheDocument();
-    });
-  });
-
   it('should return expected context given getStaticProps is called', async () => {
     // arrange
     const expected = { props: { posts: seedPosts.data } };

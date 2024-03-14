@@ -1,4 +1,4 @@
-import { Features as FeaturesType } from '../../../Models/LandingPageData';
+import { Features as FeaturesType } from '@/models/strapi/LandingPageData';
 
 interface FeaturesProps {
   features: FeaturesType[];

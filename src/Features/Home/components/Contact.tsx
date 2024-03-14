@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Contact } from '../../../Models/LandingPageData';
+import { Contact } from '@/models/strapi/LandingPageData';
 
 interface ContactProps {
   contact: Contact;

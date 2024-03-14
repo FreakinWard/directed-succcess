@@ -197,18 +197,17 @@ interface Props {
   };
 }
 
+const prefetchConfig = (queryName, query) => ({
+  queryKey: [queryName],
+  queryFn: () => graphQLRequest(query),
+});
+
 export async function getStaticProps(): Promise<Props> {
   const queryClient = new QueryClient();
 
   await Promise.all([
-    queryClient.prefetchQuery({
-      queryKey: ['about'],
-      queryFn: () => graphQLRequest(aboutQuery),
-    }),
-    queryClient.prefetchQuery({
-      queryKey: ['header'],
-      queryFn: () => graphQLRequest(headerQuery),
-    }),
+    queryClient.prefetchQuery(prefetchConfig('about', aboutQuery)),
+    queryClient.prefetchQuery(prefetchConfig('header', headerQuery)),
   ]);
 
   return {

@@ -1,4 +1,4 @@
-interface Image {
+export interface ImageData {
   url: string;
   width: number;
   height: number;
@@ -6,7 +6,7 @@ interface Image {
 
 export interface AboutResponse {
   paragraph: string;
-  image: Image;
+  image: ImageData;
   whys: string[];
   whys2: string[];
 }
@@ -33,6 +33,17 @@ export interface TestimonialAreaData {
     id: number;
     name: string;
     statement: string;
-    image: Image;
+    image: ImageData;
+  }[];
+}
+
+export interface PortfolioAreaData {
+  title: string;
+  paragraph: string;
+  portfolios: {
+    id: number;
+    title: string;
+    smallImage: ImageData;
+    largeImage: ImageData;
   }[];
 }

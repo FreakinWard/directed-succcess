@@ -7,6 +7,7 @@ import { LandingPageData } from '@/models/strapi/LandingPageData';
 import HomePage from '../Features/Home/';
 import { graphQuery as aboutQuery } from '../Features/hooks/useAbout';
 import { graphQuery as headerQuery } from '../Features/hooks/useHeader';
+import { graphQuery as portfolioAreaQuery } from '../Features/hooks/usePortfolioArea';
 import { graphQuery as serviceAreaQuery } from '../Features/hooks/useServiceArea';
 import { graphQuery as testimonialAreaQuery } from '../Features/hooks/useTestimonialArea';
 
@@ -190,6 +191,7 @@ export async function getStaticProps(): Promise<Props> {
     queryClient.prefetchQuery(prefetchConfig('header', headerQuery)),
     queryClient.prefetchQuery(prefetchConfig('serviceArea', serviceAreaQuery)),
     queryClient.prefetchQuery(prefetchConfig('testimonialArea', testimonialAreaQuery)),
+    queryClient.prefetchQuery(prefetchConfig('portfolioArea', portfolioAreaQuery)),
   ]);
 
   return {

@@ -2,9 +2,9 @@ import { LandingPageData } from '@/models/strapi/LandingPageData';
 
 import About from './components/About';
 import Contact from './components/Contact';
-import Gallery from './components/Gallery';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
+import Portfolio from './components/Portfolio';
 import Services from './components/Services';
 import Team from './components/Team';
 import Testimonials from './components/Testimonials';
@@ -20,7 +20,7 @@ export default function Home({ landingPageData }: Props) {
       <Header />
       <About />
       <Services />
-      <Gallery gallery={landingPageData.gallery} />
+      <Portfolio />
       <Testimonials />
       <Team team={landingPageData.team} />
       <Contact contact={landingPageData.contact} />

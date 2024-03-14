@@ -1,25 +1,31 @@
-import { Services as ServicesType } from '@/models/strapi/LandingPageData';
+import useServiceArea from '../../hooks/useServiceArea';
 
-interface ServicesProps {
-  services: ServicesType[];
-}
+const serviceIconMap = {
+  WordPress: 'fa fa-wordpress',
+  CartArrowDown: 'fa fa-cart-arrow-down',
+  CloudDownload: 'fa fa-cloud-download',
+  Language: 'fa fa-language',
+  Plane: 'fa fa-plane',
+  PieChart: 'fa fa-pie-chart',
+};
 
-export default function Services({ services }: ServicesProps) {
+export default function Services() {
+  const { data: serviceArea } = useServiceArea();
+
   return (
     <div id="services" className="text-center">
       <div className="container">
         <div className="section-title">
-          <h2>Our Services</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit duis sed dapibus leonec.</p>
+          <h2>{serviceArea?.title}</h2>
+          <p>{serviceArea?.paragraph}</p>
         </div>
         <div className="row">
-          {services.map((d, i) => (
-            <div key={`${d.name}-${i}`} className="col-md-4">
-              {' '}
-              <i className={d.icon}></i>
+          {serviceArea?.services?.map(service => (
+            <div key={`${service.name}-${service.id}`} className="col-md-4">
+              <i className={serviceIconMap[service.icon]}></i>
               <div className="service-desc">
-                <h3>{d.name}</h3>
-                <p>{d.text}</p>
+                <h3>{service.name}</h3>
+                <p>{service.text}</p>
               </div>
             </div>
           ))}

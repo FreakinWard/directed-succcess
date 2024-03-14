@@ -1,10 +1,12 @@
+interface Image {
+  url: string;
+  width: number;
+  height: number;
+}
+
 export interface AboutResponse {
   paragraph: string;
-  image: {
-    url: string;
-    width: number;
-    height: number;
-  };
+  image: Image;
   whys: string[];
   whys2: string[];
 }
@@ -22,5 +24,15 @@ export interface ServiceAreaData {
     icon: string;
     name: string;
     text: string;
+  }[];
+}
+
+export interface TestimonialAreaData {
+  title: string;
+  testimonials: {
+    id: number;
+    name: string;
+    statement: string;
+    image: Image;
   }[];
 }

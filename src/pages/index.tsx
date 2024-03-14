@@ -8,6 +8,7 @@ import HomePage from '../Features/Home/';
 import { graphQuery as aboutQuery } from '../Features/hooks/useAbout';
 import { graphQuery as headerQuery } from '../Features/hooks/useHeader';
 import { graphQuery as serviceAreaQuery } from '../Features/hooks/useServiceArea';
+import { graphQuery as testimonialAreaQuery } from '../Features/hooks/useTestimonialArea';
 
 const landingPageData = {
   header: {
@@ -188,6 +189,7 @@ export async function getStaticProps(): Promise<Props> {
     queryClient.prefetchQuery(prefetchConfig('about', aboutQuery)),
     queryClient.prefetchQuery(prefetchConfig('header', headerQuery)),
     queryClient.prefetchQuery(prefetchConfig('serviceArea', serviceAreaQuery)),
+    queryClient.prefetchQuery(prefetchConfig('testimonialArea', testimonialAreaQuery)),
   ]);
 
   return {

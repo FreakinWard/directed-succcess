@@ -21,7 +21,7 @@ export default function Home({ landingPageData }: Props) {
       <About />
       <Services />
       <Gallery gallery={landingPageData.gallery} />
-      <Testimonials testimonials={landingPageData.testimonials} />
+      <Testimonials />
       <Team team={landingPageData.team} />
       <Contact contact={landingPageData.contact} />
     </div>

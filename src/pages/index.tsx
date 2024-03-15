@@ -9,6 +9,7 @@ import { graphQuery as aboutQuery } from '../Features/hooks/useAbout';
 import { graphQuery as headerQuery } from '../Features/hooks/useHeader';
 import { graphQuery as portfolioAreaQuery } from '../Features/hooks/usePortfolioArea';
 import { graphQuery as serviceAreaQuery } from '../Features/hooks/useServiceArea';
+import { graphQuery as teamAreaQuery } from '../Features/hooks/useTeamArea';
 import { graphQuery as testimonialAreaQuery } from '../Features/hooks/useTestimonialArea';
 
 const landingPageData = {
@@ -192,6 +193,7 @@ export async function getStaticProps(): Promise<Props> {
     queryClient.prefetchQuery(prefetchConfig('serviceArea', serviceAreaQuery)),
     queryClient.prefetchQuery(prefetchConfig('testimonialArea', testimonialAreaQuery)),
     queryClient.prefetchQuery(prefetchConfig('portfolioArea', portfolioAreaQuery)),
+    queryClient.prefetchQuery(prefetchConfig('teamArea', teamAreaQuery)),
   ]);
 
   return {

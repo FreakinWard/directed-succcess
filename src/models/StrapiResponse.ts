@@ -47,3 +47,14 @@ export interface PortfolioAreaData {
     largeImage: ImageData;
   }[];
 }
+
+export interface TeamAreaData {
+  title: string;
+  paragraph: string;
+  teamMembers: {
+    id: number;
+    name: string;
+    role: string;
+    image: ImageData;
+  }[];
+}

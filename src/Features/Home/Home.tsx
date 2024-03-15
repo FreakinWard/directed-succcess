@@ -22,7 +22,7 @@ export default function Home({ landingPageData }: Props) {
       <Services />
       <Portfolio />
       <Testimonials />
-      <Team team={landingPageData.team} />
+      <Team />
       <Contact contact={landingPageData.contact} />
     </div>
   );

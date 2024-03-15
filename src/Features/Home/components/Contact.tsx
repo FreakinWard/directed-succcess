@@ -1,10 +1,6 @@
 import { useState } from 'react';
 
-import { Contact } from '@/models/strapi/LandingPageData';
-
-interface ContactProps {
-  contact: Contact;
-}
+import useContact from '../../hooks/useContact';
 
 const initialState = {
   name: '',
@@ -12,7 +8,8 @@ const initialState = {
   message: '',
 };
 
-export default function Contact({ contact }: ContactProps) {
+export default function Contact() {
+  const { data: contact } = useContact();
   const [{ name, email, message }, setState] = useState(initialState);
 
   const handleChange = e => {
@@ -49,11 +46,8 @@ export default function Contact({ contact }: ContactProps) {
           <div className="col-md-8">
             <div className="row">
               <div className="section-title">
-                <h2>Get In Touch</h2>
-                <p>
-                  Please fill out the form below to send us an email and we will get back to you as
-                  soon as possible.
-                </p>
+                <h2>{contact?.title}</h2>
+                <p>{contact?.paragraph}</p>
               </div>
               <form name="sentMessage" validate="true" onSubmit={handleSubmit}>
                 <div className="row">
@@ -112,7 +106,7 @@ export default function Contact({ contact }: ContactProps) {
                 <span>
                   <i className="fa fa-map-marker"></i> Address
                 </span>
-                {contact.address}
+                {contact?.address}
               </p>
             </div>
             <div className="contact-item">
@@ -120,7 +114,7 @@ export default function Contact({ contact }: ContactProps) {
                 <span>
                   <i className="fa fa-phone"></i> Phone
                 </span>{' '}
-                {contact.phone}
+                {contact?.phone}
               </p>
             </div>
             <div className="contact-item">
@@ -128,7 +122,7 @@ export default function Contact({ contact }: ContactProps) {
                 <span>
                   <i className="fa fa-envelope-o"></i> Email
                 </span>{' '}
-                {contact.email}
+                {contact?.email}
               </p>
             </div>
           </div>
@@ -137,17 +131,17 @@ export default function Contact({ contact }: ContactProps) {
               <div className="social">
                 <ul>
                   <li>
-                    <a href={contact.facebook}>
+                    <a href={contact?.facebook}>
                       <i className="fa fa-facebook"></i>
                     </a>
                   </li>
                   <li>
-                    <a href={contact.twitter}>
+                    <a href={contact?.twitter}>
                       <i className="fa fa-twitter"></i>
                     </a>
                   </li>
                   <li>
-                    <a href={contact.youtube}>
+                    <a href={contact?.youtube}>
                       <i className="fa fa-youtube"></i>
                     </a>
                   </li>

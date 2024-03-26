@@ -14,7 +14,6 @@ module.exports = withBundleAnalyzer({
     ciBuildNumber: packageJson.buildNumber,
     APPLICATIONINSIGHTS_CONNECTION_STRING: process.env.APPLICATIONINSIGHTS_CONNECTION_STRING,
     strapiApi: process.env.STRAPI_API,
-    strapiApiGraphql: process.env.STRAPI_API_GRAPHQL,
   },
   output: 'standalone',
   swcMinify: true,
@@ -28,9 +27,9 @@ module.exports = withBundleAnalyzer({
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: '127.0.0.1',
-        port: '1337',
+        protocol: process.env.REMOTE_IMAGE_PROTOCOL ?? 'https',
+        hostname: process.env.REMOTE_IMAGE_HOST,
+        port: process.env.REMOTE_IMAGE_PORT ?? '',
       },
     ],
   },

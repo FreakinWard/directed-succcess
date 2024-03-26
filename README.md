@@ -37,6 +37,12 @@ GITHUB_SECRET=visit-https://github.com/settings/applications/1778388
 
 # local development
 STRAPI_API=http://127.0.0.1:1337
+
+# remote images
+REMOTE_IMAGE_PROTOCOL=http
+REMOTE_IMAGE_HOST=127.0.0.1
+REMOTE_IMAGE_PORT=1337
+#REMOTE_IMAGE_HOST=cmsstrapist.blob.core.windows.net
 ```
 
 Next, install packages:

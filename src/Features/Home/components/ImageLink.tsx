@@ -20,9 +20,9 @@ export default function ImageLink({ title, largeImage, smallImage }: ImageProps)
             src={smallImage?.url}
             width={smallImage.width}
             height={smallImage.height}
-            alt="About Image"
+            alt={title}
           />
-        </a>{' '}
+        </a>
       </div>
     </div>
   );

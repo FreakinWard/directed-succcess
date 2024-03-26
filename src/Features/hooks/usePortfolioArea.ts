@@ -60,14 +60,8 @@ const adapter = data => {
     return {
       id,
       title,
-      smallImage: {
-        ...smallImage,
-        url: `${process.env.strapiApi}${smallImage.url}`,
-      },
-      largeImage: {
-        ...largeImage,
-        url: `${process.env.strapiApi}${largeImage.url}`,
-      },
+      smallImage,
+      largeImage,
     };
   });
 

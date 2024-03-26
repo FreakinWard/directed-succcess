@@ -50,10 +50,7 @@ const adapter = data => {
       id,
       name,
       statement,
-      image: {
-        ...image,
-        url: `${process.env.strapiApi}${image.url}`,
-      },
+      image,
     };
   });
 

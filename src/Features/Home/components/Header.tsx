@@ -15,7 +15,7 @@ export default function Header() {
                   <span></span>
                 </h1>
                 <p>{header?.paragraph}</p>
-                <a href="#features" className="btn btn-custom btn-lg page-scroll">
+                <a href="#services" className="btn btn-custom btn-lg page-scroll">
                   Learn More
                 </a>
               </div>

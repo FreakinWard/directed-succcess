@@ -28,7 +28,7 @@ module.exports = withBundleAnalyzer({
     remotePatterns: [
       {
         protocol: process.env.REMOTE_IMAGE_PROTOCOL ?? 'https',
-        hostname: process.env.REMOTE_IMAGE_HOST,
+        hostname: process.env.REMOTE_IMAGE_HOST ?? 'cmsstrapist.blob.core.windows.net',
         port: process.env.REMOTE_IMAGE_PORT ?? '',
       },
     ],

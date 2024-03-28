@@ -1,5 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
+import packageJson from '../../../package.json';
+
 export interface HealthTypes {
   version: string;
   status: string;
@@ -9,7 +11,8 @@ export default function health(req: NextApiRequest, res: NextApiResponse<HealthT
   const healthData = {
     name: process.env.appName,
     version: process.env.appVersion,
-    buildNumber: process.env.ciBuildNumber ?? 'not-set',
+    buildNumber: packageJson.buildNumber,
+    buildJobUrl: packageJson.buildJobUrl,
     strapiApi: process.env.STRAPI_API,
     status: 'ok',
   };

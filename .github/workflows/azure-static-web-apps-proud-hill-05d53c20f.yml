@@ -20,7 +20,19 @@ jobs:
         with:
           submodules: true
           lfs: false
-      - name: Build And Deploy
+
+      - name: Prepare Artifact
+        env:
+          CI_BUILD_NUMBER: '${{ github.run_id }}.${{ github.run_number }}x${{ github.run_attempt }}'
+          CI_BUILD_JOB_URL: 'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}'
+        run: |
+          npm pkg set buildNumber=$CI_BUILD_NUMBER
+          npm pkg set buildJobUrl=$CI_BUILD_JOB_URL
+
+          echo $CI_BUILD_JOB_URL
+          echo Package.json - set buildNumber
+
+      - name: Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:

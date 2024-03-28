@@ -10,6 +10,7 @@ export default function health(req: NextApiRequest, res: NextApiResponse<HealthT
     name: process.env.appName,
     version: process.env.appVersion,
     buildNumber: process.env.ciBuildNumber ?? 'not-set',
+    strapiApi: process.env.STRAPI_API,
     status: 'ok',
   };
 

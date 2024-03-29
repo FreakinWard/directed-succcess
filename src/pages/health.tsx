@@ -1,12 +1,26 @@
 import pascalCase from 'pascalcase';
 
-import useHealth from '../hooks/useHealth';
+import packageJson from '../../package.json';
 
-export default function Health() {
-  const { data: health } = useHealth();
+export function getStaticProps() {
+  const healthData = {
+    name: process.env.appName,
+    version: process.env.appVersion,
+    buildNumber: packageJson.buildNumber,
+    buildJobUrl: packageJson.buildJobUrl,
+    strapiApi: process.env.STRAPI_API,
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+  };
 
-  if (!health) return null;
+  return {
+    props: {
+      health: healthData,
+    },
+  };
+}
 
+export default function Health({ health }) {
   return (
     <div>
       <h2>Health Check</h2>

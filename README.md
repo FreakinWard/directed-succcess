@@ -37,6 +37,7 @@ GITHUB_SECRET=visit-https://github.com/settings/applications/1778388
 
 # local development
 STRAPI_API=http://127.0.0.1:1337
+REVALIDATE_KEY=revalidate-key-value
 
 # remote images
 REMOTE_IMAGE_PROTOCOL=http

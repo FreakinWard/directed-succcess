@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import pascalCase from 'pascalcase';
 
 import packageJson from '../../package.json';
@@ -24,10 +25,23 @@ export default function Health({ health }) {
   return (
     <div>
       <h2>Health Check</h2>
-      {Object.keys(health)?.map(prop => {
+      {Object.keys(health)?.map((prop, index) => {
+        if (prop === 'buildJobUrl')
+          return (
+            <div key={index}>
+              <span>
+                <strong>{`${prop}: `}</strong>
+                <Link href={health[prop]}>{health[prop]}</Link>
+              </span>
+            </div>
+          );
+
         return (
           <div key={prop}>
-            <span>{`${pascalCase(prop)}: ${health[prop]}`}</span>
+            <span>
+              <strong>{`${pascalCase(prop)}: `}</strong>
+              {`${health[prop]}`}
+            </span>
           </div>
         );
       })}

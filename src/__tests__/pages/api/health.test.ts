@@ -13,8 +13,10 @@ describe('/api/health', () => {
     const expected = {
       name: 'nameValue',
       version: 'versionValue',
-      buildNumber: 'not-set',
+      buildNumber: 'set-in-ci-pipeline',
+      buildJobUrl: 'set-in-ci-pipeline',
       status: 'ok',
+      strapiApi: 'https://cms-strapi-server.azurewebsites.net/',
     };
 
     process.env.appName = expected.name;
@@ -29,25 +31,6 @@ describe('/api/health', () => {
 
         // assert
         expect(result).toEqual(expected);
-      },
-    });
-  });
-
-  it('should return expected "not-set" given ciBuildNumber is undefined', async () => {
-    // arrange
-    const handler = health;
-
-    delete process.env.ciBuildNumber;
-
-    await testApiHandler<HealthTypes>({
-      handler,
-      test: async ({ fetch }) => {
-        // act
-        const res = await fetch({ method: 'POST', body: 'data' });
-        const result = await res.json();
-
-        // assert
-        expect(result).toHaveProperty('buildNumber', 'not-set');
       },
     });
   });

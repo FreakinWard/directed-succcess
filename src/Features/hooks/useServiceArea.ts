@@ -1,6 +1,6 @@
 import { gql } from 'graphql-request';
 
-import useGraphQl from '@/hooks/useGraphQl';
+import useStrapiCms from '@/hooks/useStrapiCms';
 import { ServiceAreaData } from '@/models/StrapiResponse';
 
 export const graphQuery = gql`
@@ -55,7 +55,7 @@ const adapter = data => {
 };
 
 export default function useServiceArea() {
-  return useGraphQl<ServiceAreaData>({
+  return useStrapiCms<ServiceAreaData>({
     queryKey: ['serviceArea'],
     select: adapter,
     graphQuery,

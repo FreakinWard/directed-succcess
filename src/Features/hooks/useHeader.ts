@@ -1,6 +1,6 @@
 import { gql } from 'graphql-request';
 
-import useGraphQl from '@/hooks/useGraphQl';
+import useStrapiCms from '@/hooks/useStrapiCms';
 import { HeaderData } from '@/models/StrapiResponse';
 
 export const graphQuery = gql`
@@ -29,7 +29,7 @@ const adapter = data => {
 };
 
 export default function useHeader() {
-  return useGraphQl<HeaderData>({
+  return useStrapiCms<HeaderData>({
     queryKey: ['header'],
     select: adapter,
     graphQuery,

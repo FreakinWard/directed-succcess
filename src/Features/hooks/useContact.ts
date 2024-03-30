@@ -1,6 +1,6 @@
 import { gql } from 'graphql-request';
 
-import useGraphQl from '@/hooks/useGraphQl';
+import useStrapiCms from '@/hooks/useStrapiCms';
 import { ContactData } from '@/models/StrapiResponse';
 
 export const graphQuery = gql`
@@ -47,7 +47,7 @@ const adapter = data => {
 };
 
 export default function useContact() {
-  return useGraphQl<ContactData>({
+  return useStrapiCms<ContactData>({
     queryKey: ['contact'],
     select: adapter,
     graphQuery,

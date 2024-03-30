@@ -1,6 +1,6 @@
 import { gql } from 'graphql-request';
 
-import useGraphQl from '@/hooks/useGraphQl';
+import useStrapiCms from '@/hooks/useStrapiCms';
 import { PortfolioAreaData } from '@/models/StrapiResponse';
 
 export const graphQuery = gql`
@@ -73,7 +73,7 @@ const adapter = data => {
 };
 
 export default function usePortfolioArea() {
-  return useGraphQl<PortfolioAreaData>({
+  return useStrapiCms<PortfolioAreaData>({
     queryKey: ['portfolioArea'],
     select: adapter,
     graphQuery,

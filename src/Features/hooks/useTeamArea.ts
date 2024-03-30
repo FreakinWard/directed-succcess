@@ -1,6 +1,6 @@
 import { gql } from 'graphql-request';
 
-import useGraphQl from '@/hooks/useGraphQl';
+import useStrapiCms from '@/hooks/useStrapiCms';
 import { TeamAreaData } from '@/models/StrapiResponse';
 
 export const graphQuery = gql`
@@ -64,7 +64,7 @@ const adapter = data => {
 };
 
 export default function useTeamArea() {
-  return useGraphQl<TeamAreaData>({
+  return useStrapiCms<TeamAreaData>({
     queryKey: ['teamArea'],
     select: adapter,
     graphQuery,

@@ -3,7 +3,7 @@ import { Variables } from 'graphql-request';
 
 import graphQLRequest from '@/core/utils/graphQLRequest';
 
-interface Props extends UseQueryOptions {
+export interface UseGraphQlProps extends UseQueryOptions {
   queryKey: QueryKey;
   url?: string;
   graphQuery: string;
@@ -19,7 +19,7 @@ export default function useGraphQl<T>({
   select,
   variables,
   ...rest
-}: Props) {
+}: UseGraphQlProps) {
   const queryObject = {
     queryKey,
     enabled,

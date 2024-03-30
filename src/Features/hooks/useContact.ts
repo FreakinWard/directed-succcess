@@ -48,7 +48,7 @@ const adapter = data => {
 
 export default function useContact() {
   return useGraphQl<ContactData>({
-    queryKey: ['header'],
+    queryKey: ['contact'],
     select: adapter,
     graphQuery,
   });

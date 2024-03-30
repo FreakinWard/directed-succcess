@@ -1,4 +1,4 @@
-import { DehydratedState, QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { DehydratedState } from '@tanstack/react-query';
 import { NextRouter } from 'next/router';
 import { Session } from 'next-auth';
 import { ReactNode } from 'react';
@@ -24,21 +24,9 @@ if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
 }
 
 export default function AppState({ children, pageTitle, router, dehydratedState }: Props) {
-  const queryConfig = {
-    defaultOptions: {
-      queries: {
-        retry: false,
-        refetchOnWindowFocus: false,
-      },
-    },
-  };
-  const queryClient = new QueryClient(queryConfig);
-
   return (
     <TelemetryProvider router={router} pageTitle={pageTitle}>
-      <QueryCache dehydratedState={dehydratedState}>
-        <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-      </QueryCache>
+      <QueryCache dehydratedState={dehydratedState}>{children}</QueryCache>
     </TelemetryProvider>
   );
 }

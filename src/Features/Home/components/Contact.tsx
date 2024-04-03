@@ -1,28 +1,27 @@
-import { useState } from 'react';
-
 import useContact from '../../hooks/useContact';
 
-const initialState = {
-  name: '',
-  email: '',
-  message: '',
-};
+// const initialState = {
+//   name: '',
+//   email: '',
+//   message: '',
+// };
 
 export default function Contact() {
   const { data: contact } = useContact();
-  const [{ name, email, message }, setState] = useState(initialState);
+  // const [{ name, email, message }, setState] = useState(initialState);
 
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setState(prevState => ({ ...prevState, [name]: value }));
-  };
+  // const handleChange = e => {
+  //   const { name, value } = e.target;
+  //   setState(prevState => ({ ...prevState, [name]: value }));
+  // };
 
   // const clearState = () => setState({ ...initialState });
 
+  /* istanbul ignore next */
   const handleSubmit = e => {
     e.preventDefault();
     // eslint-disable-next-line no-console
-    console.log(name, email, message);
+    // console.log(name, email, message);
 
     {
       /* replace below with your own Service ID, Template ID and Public Key from your EmailJS account */
@@ -60,7 +59,6 @@ export default function Contact() {
                         className="form-control"
                         placeholder="Name"
                         required
-                        onChange={handleChange}
                       />
                       <p className="help-block text-danger"></p>
                     </div>
@@ -74,7 +72,6 @@ export default function Contact() {
                         className="form-control"
                         placeholder="Email"
                         required
-                        onChange={handleChange}
                       />
                       <p className="help-block text-danger"></p>
                     </div>
@@ -88,7 +85,6 @@ export default function Contact() {
                     rows={4}
                     placeholder="Message"
                     required
-                    onChange={handleChange}
                   ></textarea>
                   <p className="help-block text-danger"></p>
                 </div>

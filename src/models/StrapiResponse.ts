@@ -1,5 +1,6 @@
 export interface ImageData {
   url: string;
+  alternateText: string;
   width: number;
   height: number;
 }

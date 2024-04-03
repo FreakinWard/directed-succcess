@@ -26,7 +26,7 @@ export default function useGraphQl<T>({
     select,
     queryFn: () => graphQLRequest(graphQuery, variables),
     ...rest,
-  };
+  } as UseQueryOptions;
 
   const query = useQuery(queryObject);
 

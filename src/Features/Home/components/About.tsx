@@ -18,7 +18,7 @@ export default function About() {
               src={about?.image.url}
               width={about?.image.width}
               height={about?.image.height}
-              alt="About Image"
+              alt={about?.image.alternateText}
             />
           </div>
           <div className="col-xs-12 col-md-6">

@@ -33,6 +33,6 @@ describe('Layout', () => {
     render(tree);
 
     // assert
-    screen.getByText('Powered by');
+    screen.getByText('© 2024 MB Consulting');
   });
 });

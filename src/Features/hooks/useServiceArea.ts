@@ -4,7 +4,7 @@ import useStrapiCms from '@/hooks/useStrapiCms';
 import { ServiceAreaData } from '@/models/StrapiResponse';
 
 export const graphQuery = gql`
-  query Services {
+  query ServiceArea {
     serviceArea {
       data {
         attributes {

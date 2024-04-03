@@ -1,7 +1,7 @@
 import { gql } from 'graphql-request';
 
 import useStrapiCms from '@/hooks/useStrapiCms';
-import { AboutResponse } from '@/models/StrapiResponse';
+import { AboutResponse } from '@/types/strapi/StrapiResponse';
 
 export const graphQuery = gql`
   query About {

@@ -7,8 +7,8 @@ import seedPortfolioArea from '@/core/msw/seed/seedPortfolioArea';
 import seedServiceArea from '@/core/msw/seed/seedServiceArea';
 import seedTeamArea from '@/core/msw/seed/seedTeamArea';
 import seedTestimonialArea from '@/core/msw/seed/seedTestimonialArea';
+import { SeedGraphQLQuery } from '@/types/seed/SeedGraphQLQuery';
 
-import { SeedGraphQLQuery } from '../../../types/seed/SeedGraphQLQuery';
 import seedAuth from './seed/seedAuth';
 import seedHealth from './seed/seedHealth';
 

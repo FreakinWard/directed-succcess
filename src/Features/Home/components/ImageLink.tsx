@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { ImageData } from '@/models/StrapiResponse';
+import { ImageData } from '@/types/strapi/StrapiResponse';
 
 interface ImageProps {
   title: string;

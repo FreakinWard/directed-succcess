@@ -1,7 +1,6 @@
-import { TestimonialAreaData } from '@/models/StrapiResponse';
-
-import { SeedGraphQLQuery } from '../../../../types/seed/SeedGraphQLQuery';
-import { TestimonialAreaEntity } from '../../../../types/strapi/__generated__/graphql';
+import { SeedGraphQLQuery } from '@/types/seed/SeedGraphQLQuery';
+import { TestimonialAreaEntity } from '@/types/strapi/__generated__/graphql';
+import { TestimonialAreaData } from '@/types/strapi/StrapiResponse';
 
 const data = {
   title: 'title-value',

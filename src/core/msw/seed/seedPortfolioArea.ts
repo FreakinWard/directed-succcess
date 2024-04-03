@@ -1,7 +1,6 @@
-import { PortfolioAreaData } from '@/models/StrapiResponse';
-
-import { SeedGraphQLQuery } from '../../../../types/seed/SeedGraphQLQuery';
-import { PortfolioAreaEntity } from '../../../../types/strapi/__generated__/graphql';
+import { SeedGraphQLQuery } from '@/types/seed/SeedGraphQLQuery';
+import { PortfolioAreaEntity } from '@/types/strapi/__generated__/graphql';
+import { PortfolioAreaData } from '@/types/strapi/StrapiResponse';
 
 const data = {
   title: 'title-value',

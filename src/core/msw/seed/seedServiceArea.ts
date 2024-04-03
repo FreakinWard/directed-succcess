@@ -1,7 +1,6 @@
-import { ServiceAreaData } from '@/models/StrapiResponse';
-
-import { SeedGraphQLQuery } from '../../../../types/seed/SeedGraphQLQuery';
-import { ServiceAreaEntity } from '../../../../types/strapi/__generated__/graphql';
+import { SeedGraphQLQuery } from '@/types/seed/SeedGraphQLQuery';
+import { ServiceAreaEntity } from '@/types/strapi/__generated__/graphql';
+import { ServiceAreaData } from '@/types/strapi/StrapiResponse';
 
 const data = {
   title: 'title-value',

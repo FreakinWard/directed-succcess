@@ -1,7 +1,6 @@
-import { HeaderData } from '@/models/StrapiResponse';
-
-import { SeedGraphQLQuery } from '../../../../types/seed/SeedGraphQLQuery';
-import { HeaderEntityResponse } from '../../../../types/strapi/__generated__/graphql';
+import { SeedGraphQLQuery } from '@/types/seed/SeedGraphQLQuery';
+import { HeaderEntityResponse } from '@/types/strapi/__generated__/graphql';
+import { HeaderData } from '@/types/strapi/StrapiResponse';
 
 const data = {
   title: 'title-value',

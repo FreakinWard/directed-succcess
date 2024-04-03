@@ -19,7 +19,7 @@
       "@/components/*": ["components/*"],
       "@/core/*": ["core/*"],
       "@/models/*": ["models/*"],
-      "@/types/*": ["types/*"],
+      "@/types/*": ["../types/*"],
       "@/hooks/*": ["hooks/*"],
     },
   },

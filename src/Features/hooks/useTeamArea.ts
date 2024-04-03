@@ -1,7 +1,7 @@
 import { gql } from 'graphql-request';
 
 import useStrapiCms from '@/hooks/useStrapiCms';
-import { TeamAreaData } from '@/models/StrapiResponse';
+import { TeamAreaData } from '@/types/strapi/StrapiResponse';
 
 export const graphQuery = gql`
   query TeamArea {

@@ -1,7 +1,6 @@
-import { ContactData } from '@/models/StrapiResponse';
-
-import { SeedGraphQLQuery } from '../../../../types/seed/SeedGraphQLQuery';
-import { ContactEntityResponse } from '../../../../types/strapi/__generated__/graphql';
+import { SeedGraphQLQuery } from '@/types/seed/SeedGraphQLQuery';
+import { ContactEntityResponse } from '@/types/strapi/__generated__/graphql';
+import { ContactData } from '@/types/strapi/StrapiResponse';
 
 const data = {
   title: 'title-value',

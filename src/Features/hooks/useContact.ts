@@ -1,7 +1,7 @@
 import { gql } from 'graphql-request';
 
 import useStrapiCms from '@/hooks/useStrapiCms';
-import { ContactData } from '@/models/StrapiResponse';
+import { ContactData } from '@/types/strapi/StrapiResponse';
 
 export const graphQuery = gql`
   query Contact {

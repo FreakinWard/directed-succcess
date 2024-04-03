@@ -1,7 +1,6 @@
-import { AboutResponse } from '@/models/StrapiResponse';
-
-import { SeedGraphQLQuery } from '../../../../types/seed/SeedGraphQLQuery';
-import { AboutEntityResponse } from '../../../../types/strapi/__generated__/graphql';
+import { SeedGraphQLQuery } from '@/types/seed/SeedGraphQLQuery';
+import { AboutEntityResponse } from '@/types/strapi/__generated__/graphql';
+import { AboutResponse } from '@/types/strapi/StrapiResponse';
 
 const data = {
   paragraph: 'paragraph-value',

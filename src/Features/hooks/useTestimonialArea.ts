@@ -1,7 +1,7 @@
 import { gql } from 'graphql-request';
 
 import useStrapiCms from '@/hooks/useStrapiCms';
-import { TestimonialAreaData } from '@/models/StrapiResponse';
+import { TestimonialAreaData } from '@/types/strapi/StrapiResponse';
 
 export const graphQuery = gql`
   query TestimonialArea {

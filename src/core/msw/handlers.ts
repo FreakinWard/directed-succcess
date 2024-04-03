@@ -1,8 +1,10 @@
-import { rest } from 'msw';
+import { graphql, rest } from 'msw';
 
+import seedAbout from '@/core/msw/seed/seedAbout';
+
+import { SeedGraphQLQuery } from '../../../types/seed/SeedGraphQLQuery';
 import seedAuth from './seed/seedAuth';
 import seedHealth from './seed/seedHealth';
-import seedPosts from './seed/seedPosts';
 
 const mockHandler = (statusText = null, statusCode = 200) => {
   return async (req, res, ctx) => {
@@ -14,13 +16,23 @@ const mockRequestGet = (url, responseData, statusCode = 200) => {
   return rest.get(url, mockHandler(responseData, statusCode));
 };
 
+const mockGraphQL = <T, U>(
+  { queryName, data, graphqlResponse }: SeedGraphQLQuery<T, U>,
+  url = `${process.env.STRAPI_API}/graphql`
+) => {
+  const resource = graphql.link(url);
+
+  const ctxData = graphqlResponse ?? data;
+
+  return resource.query(queryName, (_req, res, ctx) => res(ctx.data(ctxData)));
+};
+
 export default [
   // auth
   mockRequestGet('*/api/auth/session', seedAuth.session),
   mockRequestGet('*/api/auth/providers', seedAuth.providers),
 
   // app
-  mockRequestGet(seedPosts.clientUrl, seedPosts.data),
-  mockRequestGet(seedPosts.serverUrl, seedPosts.data),
   mockRequestGet(seedHealth.clientUrl, seedHealth.data),
+  mockGraphQL(seedAbout),
 ];

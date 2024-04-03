@@ -9,6 +9,8 @@ const WhyList = ({ whys }) => {
 export default function About() {
   const { data: about } = useAbout();
 
+  if (!about) return null;
+
   return (
     <div id="about">
       <div className="container">

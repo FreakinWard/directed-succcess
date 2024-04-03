@@ -4,6 +4,7 @@ import seedAbout from '@/core/msw/seed/seedAbout';
 import seedContact from '@/core/msw/seed/seedContact';
 import seedHeader from '@/core/msw/seed/seedHeader';
 import seedServiceArea from '@/core/msw/seed/seedServiceArea';
+import seedTestimonialArea from '@/core/msw/seed/seedTestimonialArea';
 
 import { SeedGraphQLQuery } from '../../../types/seed/SeedGraphQLQuery';
 import seedAuth from './seed/seedAuth';
@@ -41,4 +42,5 @@ export default [
   mockGraphQL(seedContact),
   mockGraphQL(seedHeader),
   mockGraphQL(seedServiceArea),
+  mockGraphQL(seedTestimonialArea),
 ];

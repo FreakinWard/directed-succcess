@@ -41,13 +41,11 @@ const adapter = data => {
   const testimonials = rootTestimonialArea.testimonials.data.map(testimonial => {
     const root = testimonial.attributes;
 
-    const id = testimonial.id;
     const name = root.Name;
     const statement = root.Statement;
     const image = root.Image.data.attributes;
 
     return {
-      id,
       name,
       statement,
       image,

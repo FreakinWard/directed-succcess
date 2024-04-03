@@ -25,7 +25,7 @@ export default function Testimonials() {
                 </div>
                 <div className="testimonial-content">
                   <p>{`"${testimonial?.statement}"`}</p>
-                  <div className="testimonial-meta"> - {testimonial.name} </div>
+                  <div className="testimonial-meta"> {`- ${testimonial.name}`} </div>
                 </div>
               </div>
             </div>

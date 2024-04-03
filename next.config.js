@@ -12,6 +12,7 @@ module.exports = withBundleAnalyzer({
     appName: packageJson.name,
     appVersion: packageJson.version,
     ciBuildNumber: packageJson.buildNumber,
+    ciBuildJobUrl: packageJson.buildJobUrl,
     APPLICATIONINSIGHTS_CONNECTION_STRING: process.env.APPLICATIONINSIGHTS_CONNECTION_STRING,
     STRAPI_API: process.env.STRAPI_API,
   },

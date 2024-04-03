@@ -1,15 +1,22 @@
 import '@testing-library/jest-dom';
 import 'whatwg-fetch';
 
-const originalStrapiApi = process.env.STRAPI_API;
+const originalEnvVariables = process.env;
 
 beforeAll(() => {
   jest.resetModules();
-  process.env.STRAPI_API = 'https://fakeapi.com';
+  process.env = {
+    ...originalEnvVariables,
+    appName: 'name-value',
+    appVersion: 'appVersion-value',
+    ciBuildNumber: 'ciBuildNumber-value',
+    ciBuildJobUrl: 'ciBuildJobUrl-value',
+    STRAPI_API: 'https://fakeapi.com',
+  };
 });
 
 afterAll(() => {
-  process.env.STRAPI_API = originalStrapiApi;
+  process.env = originalEnvVariables;
 });
 
 global.console.log = message => {

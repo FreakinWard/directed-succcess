@@ -1,14 +1,12 @@
 import Link from 'next/link';
 import pascalCase from 'pascalcase';
 
-import packageJson from '../../package.json';
-
 export function getStaticProps() {
   const healthData = {
     name: process.env.appName,
     version: process.env.appVersion,
-    buildNumber: packageJson.buildNumber,
-    buildJobUrl: packageJson.buildJobUrl,
+    buildNumber: process.env.ciBuildNumber,
+    buildJobUrl: process.env.ciBuildJobUrl,
     strapiApi: process.env.STRAPI_API,
     status: 'ok',
     timestamp: new Date().toISOString(),
@@ -30,7 +28,7 @@ export default function Health({ health }) {
           return (
             <div key={index}>
               <span>
-                <strong>{`${prop}: `}</strong>
+                <strong>{`${pascalCase(prop)}: `}</strong>
                 <Link href={health[prop]}>{health[prop]}</Link>
               </span>
             </div>

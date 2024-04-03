@@ -45,18 +45,6 @@ export const AppWrapper = ({
   );
 };
 
-export const mockEnv = () => {
-  const OLD_ENV = process.env;
-
-  beforeEach(() => {
-    jest.resetModules();
-    process.env = { ...OLD_ENV };
-  });
-
-  afterAll(() => {
-    process.env = OLD_ENV;
-  });
-};
 export const mswMock = () => {
   let mswCleanup;
 

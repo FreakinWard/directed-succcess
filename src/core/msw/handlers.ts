@@ -3,6 +3,7 @@ import { graphql, rest } from 'msw';
 import seedAbout from '@/core/msw/seed/seedAbout';
 import seedContact from '@/core/msw/seed/seedContact';
 import seedHeader from '@/core/msw/seed/seedHeader';
+import seedPortfolioArea from '@/core/msw/seed/seedPortfolioArea';
 import seedServiceArea from '@/core/msw/seed/seedServiceArea';
 import seedTestimonialArea from '@/core/msw/seed/seedTestimonialArea';
 
@@ -43,4 +44,5 @@ export default [
   mockGraphQL(seedHeader),
   mockGraphQL(seedServiceArea),
   mockGraphQL(seedTestimonialArea),
+  mockGraphQL(seedPortfolioArea),
 ];

@@ -4,7 +4,7 @@ import useStrapiCms from '@/hooks/useStrapiCms';
 import { PortfolioAreaData } from '@/models/StrapiResponse';
 
 export const graphQuery = gql`
-  query TestimonialArea {
+  query PortfolioArea {
     portfolioArea {
       data {
         attributes {

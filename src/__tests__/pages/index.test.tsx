@@ -1,63 +1,45 @@
-import { render, screen } from '@testing-library/react';
+import { queryByAttribute, render } from '@testing-library/react';
 
-import seedPosts from '../../core/msw/seed/seedPosts';
+import seedAbout from '@/core/msw/seed/seedAbout';
+
 import { AppWrapper as wrapper, mswMock } from '../../core/test.utils';
 import Home, { getStaticProps } from '../../pages';
-import { Post } from '../../pages/api/posts';
 
 describe('index', () => {
   mswMock();
 
-  const posts: Post[] = [
-    {
-      id: 11,
-      title: 'titleValue11',
-    },
-    {
-      id: 12,
-      title: 'titleValue12',
-    },
-  ];
-  const tree = <Home posts={posts} />;
-
-  it('should render staticProps', () => {
-    // arrange
-    const postLength = `Length: ${posts.length}`;
-
-    // act
-    render(tree, { wrapper });
-
-    // assert
-    expect(screen.getByText(postLength)).toBeInTheDocument();
-
-    posts.forEach(post => {
-      expect(screen.getByText(`${post.id} - ${post.title}`)).toBeInTheDocument();
-    });
-  });
+  const tree = <Home />;
 
   it('should return expected context given getStaticProps is called', async () => {
     // arrange
-    const expected = { props: { posts: seedPosts.data } };
+
+    const queryHasExpectedData = (queryKey, expectedData) => {
+      expect(
+        response.props.dehydratedState.queries.find(x => x.queryKey.includes(queryKey)).state.data
+      ).toEqual(expectedData);
+    };
 
     // act
     const response = await getStaticProps();
 
     // assert
-    expect(response).toEqual(expected);
+    queryHasExpectedData('about', seedAbout.graphqlResponse);
   });
 
-  it('should render client-fetched posts', async () => {
+  it('should render expected page sections', async () => {
     // arrange
-    const postLength = `Length: ${seedPosts.data.length}`;
+    const getById = queryByAttribute.bind(null, 'id');
 
     // act
-    render(tree, { wrapper });
+    const dom = render(tree, { wrapper });
 
     // assert
-    expect(await screen.findByText(postLength)).toBeInTheDocument();
-
-    seedPosts.data.forEach(post => {
-      expect(screen.getByText(`${post.id} - ${post.title}`)).toBeInTheDocument();
-    });
+    getById(dom.container, 'about');
+    getById(dom.container, 'header');
+    getById(dom.container, 'services');
+    getById(dom.container, 'testimonials');
+    getById(dom.container, 'portfolio');
+    getById(dom.container, 'team');
+    getById(dom.container, 'contact');
   });
 });

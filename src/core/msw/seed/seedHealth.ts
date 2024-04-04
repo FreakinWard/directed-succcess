@@ -1,4 +1,11 @@
 export default {
   clientUrl: '*/api/health',
-  data: { version: 'versionValue', status: 'statusValue' },
+  data: {
+    name: 'name-value',
+    version: 'appVersion-value',
+    buildNumber: 'ciBuildNumber-value',
+    buildJobUrl: 'ciBuildJobUrl-value',
+    strapiApi: 'https://fakeapi.com',
+    status: 'ok',
+  },
 };

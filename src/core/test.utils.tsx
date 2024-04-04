@@ -45,18 +45,6 @@ export const AppWrapper = ({
   );
 };
 
-export const mockEnv = () => {
-  const OLD_ENV = process.env;
-
-  beforeEach(() => {
-    jest.resetModules();
-    process.env = { ...OLD_ENV };
-  });
-
-  afterAll(() => {
-    process.env = OLD_ENV;
-  });
-};
 export const mswMock = () => {
   let mswCleanup;
 
@@ -80,4 +68,19 @@ export const getByTextContent = text => {
 
     return nodeHasText && childrenDontHaveText;
   });
+};
+
+export const expectImageWithAttributes = image => {
+  // arrange
+  const encodedImageUrl = encodeURIComponent(image.url);
+  const expectedImage = {
+    ...image,
+    url: `http://localhost/_next/image?url=${encodedImageUrl}&w=256&q=75`,
+  };
+  const imageElement = screen.getByAltText(image.alternateText) as HTMLImageElement;
+
+  expect(imageElement.src).toEqual(expectedImage.url);
+  expect(imageElement.width).toEqual(expectedImage.width);
+  expect(imageElement.height).toEqual(expectedImage.height);
+  expect(imageElement.alt).toEqual(image.alternateText);
 };

@@ -1,0 +1,6 @@
+overwrite: true
+schema: 'https://cms-strapi-server.azurewebsites.net/graphql'
+generates:
+  src/types/strapi/__generated__/:
+    preset: 'client'
+    plugins: []

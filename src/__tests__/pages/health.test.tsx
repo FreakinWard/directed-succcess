@@ -1,4 +1,6 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
+
+import { getByTextContent } from '@/core/userActions';
 
 import seedHealth from '../../core/msw/seed/seedHealth';
 import { AppWrapper as wrapper, mswMock } from '../../core/test.utils';
@@ -9,13 +11,18 @@ describe('health', () => {
 
   it('should render expected health values', async () => {
     // arrange
-    const tree = <Health />;
+    const healthMock = seedHealth.data;
+    const tree = <Health health={healthMock} />;
 
     // act
     render(tree, { wrapper });
 
     // assert
-    expect(await screen.findByText(`Status: ${seedHealth.data.status}`)).toBeInTheDocument();
-    expect(await screen.findByText(`Version: ${seedHealth.data.version}`)).toBeInTheDocument();
+    getByTextContent(`Name: ${seedHealth.data.name}`);
+    getByTextContent(`Version: ${seedHealth.data.version}`);
+    getByTextContent(`BuildNumber: ${seedHealth.data.buildNumber}`);
+    getByTextContent(`BuildJobUrl: ${seedHealth.data.buildJobUrl}`);
+    getByTextContent(`StrapiApi: ${seedHealth.data.strapiApi}`);
+    getByTextContent(`Status: ${seedHealth.data.status}`);
   });
 });

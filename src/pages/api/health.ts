@@ -9,7 +9,9 @@ export default function health(req: NextApiRequest, res: NextApiResponse<HealthT
   const healthData = {
     name: process.env.appName,
     version: process.env.appVersion,
-    buildNumber: process.env.ciBuildNumber ?? 'not-set',
+    buildNumber: process.env.ciBuildNumber,
+    buildJobUrl: process.env.ciBuildJobUrl,
+    strapiApi: process.env.STRAPI_API,
     status: 'ok',
   };
 

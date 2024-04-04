@@ -12,7 +12,9 @@ module.exports = withBundleAnalyzer({
     appName: packageJson.name,
     appVersion: packageJson.version,
     ciBuildNumber: packageJson.buildNumber,
+    ciBuildJobUrl: packageJson.buildJobUrl,
     APPLICATIONINSIGHTS_CONNECTION_STRING: process.env.APPLICATIONINSIGHTS_CONNECTION_STRING,
+    STRAPI_API: process.env.STRAPI_API ?? 'not0set',
   },
   output: 'standalone',
   swcMinify: true,
@@ -21,5 +23,15 @@ module.exports = withBundleAnalyzer({
   },
   typescript: {
     ignoreBuildErrors: isProduction,
+  },
+
+  images: {
+    remotePatterns: [
+      {
+        protocol: process.env.REMOTE_IMAGE_PROTOCOL ?? 'https',
+        hostname: process.env.REMOTE_IMAGE_HOST ?? 'cmsstrapist.blob.core.windows.net',
+        port: process.env.REMOTE_IMAGE_PORT ?? '',
+      },
+    ],
   },
 });

@@ -1,19 +1,45 @@
+import Link from 'next/link';
 import pascalCase from 'pascalcase';
 
-import useHealth from '../hooks/useHealth';
+export function getStaticProps() {
+  const healthData = {
+    name: process.env.appName,
+    version: process.env.appVersion,
+    buildNumber: process.env.ciBuildNumber,
+    buildJobUrl: process.env.ciBuildJobUrl,
+    strapiApi: process.env.STRAPI_API,
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+  };
 
-export default function Health() {
-  const { data: health } = useHealth();
+  return {
+    props: {
+      health: healthData,
+    },
+  };
+}
 
-  if (!health) return null;
-
+export default function Health({ health }) {
   return (
     <div>
       <h2>Health Check</h2>
-      {Object.keys(health)?.map(prop => {
+      {Object.keys(health)?.map((prop, index) => {
+        if (prop === 'buildJobUrl')
+          return (
+            <div key={index}>
+              <span>
+                <strong>{`${pascalCase(prop)}: `}</strong>
+                <Link href={health[prop]}>{health[prop]}</Link>
+              </span>
+            </div>
+          );
+
         return (
           <div key={prop}>
-            <span>{`${pascalCase(prop)}: ${health[prop]}`}</span>
+            <span>
+              <strong>{`${pascalCase(prop)}: `}</strong>
+              {`${health[prop]}`}
+            </span>
           </div>
         );
       })}

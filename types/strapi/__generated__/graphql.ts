@@ -327,7 +327,7 @@ export type GenericMorph =
 
 export type Header = {
   __typename?: 'Header';
-  BackgroundImageUrl?: Maybe<UploadFileEntityResponse>;
+  BackgroundImage?: Maybe<UploadFileEntityResponse>;
   Paragraph?: Maybe<Scalars['String']['output']>;
   Title?: Maybe<Scalars['String']['output']>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
@@ -347,7 +347,7 @@ export type HeaderEntityResponse = {
 };
 
 export type HeaderInput = {
-  BackgroundImageUrl?: InputMaybe<Scalars['ID']['input']>;
+  BackgroundImage?: InputMaybe<Scalars['ID']['input']>;
   Paragraph?: InputMaybe<Scalars['String']['input']>;
   Title?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1151,10 +1151,10 @@ export type SocialMedia = {
   __typename?: 'SocialMedia';
   Image: UploadFileEntityResponse;
   Platform: Enum_Socialmedia_Platform;
-  PlatformUrl: Scalars['String']['output'];
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
+  url: Scalars['String']['output'];
 };
 
 export type SocialMediaEntity = {
@@ -1176,7 +1176,6 @@ export type SocialMediaEntityResponseCollection = {
 
 export type SocialMediaFiltersInput = {
   Platform?: InputMaybe<StringFilterInput>;
-  PlatformUrl?: InputMaybe<StringFilterInput>;
   and?: InputMaybe<Array<InputMaybe<SocialMediaFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
@@ -1184,13 +1183,14 @@ export type SocialMediaFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<SocialMediaFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
+  url?: InputMaybe<StringFilterInput>;
 };
 
 export type SocialMediaInput = {
   Image?: InputMaybe<Scalars['ID']['input']>;
   Platform?: InputMaybe<Enum_Socialmedia_Platform>;
-  PlatformUrl?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type StringFilterInput = {

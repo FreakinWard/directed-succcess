@@ -32,6 +32,7 @@ const mockGraphQL = <T, U>(
 
   return resource.query(queryName, (_req, res, ctx) => res(ctx.data(ctxData)));
 };
+const mockPassThroughGet = url => rest.get(url, req => req.passthrough());
 
 export default [
   // auth
@@ -47,4 +48,19 @@ export default [
   mockGraphQL(seedTestimonialArea),
   mockGraphQL(seedPortfolioArea),
   mockGraphQL(seedTeamArea),
+
+  // nextjs dev
+  mockPassThroughGet('/_next/static/*'),
+  mockPassThroughGet('/_next/image*'),
+  mockPassThroughGet('/_next/data/*'),
+  mockPassThroughGet('/__nextjs_original-stack-frame'),
+  mockPassThroughGet('/vercel.svg'),
+  mockPassThroughGet('/flight-select'),
+  mockPassThroughGet('/favicon.ico'),
+  mockPassThroughGet('*chrome-extension*'),
+  mockPassThroughGet('*fonts.googleapis.*'),
+  mockPassThroughGet('*fonts.gstatic.*'),
+  mockPassThroughGet('/fonts/*'),
+  mockPassThroughGet('/img/*'),
+  mockPassThroughGet(`${process.env.REMOTE_IMAGE_HOST}/*`),
 ];

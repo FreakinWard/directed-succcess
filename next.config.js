@@ -14,7 +14,7 @@ module.exports = withBundleAnalyzer({
     ciBuildNumber: packageJson.buildNumber,
     ciBuildJobUrl: packageJson.buildJobUrl,
     APPLICATIONINSIGHTS_CONNECTION_STRING: process.env.APPLICATIONINSIGHTS_CONNECTION_STRING,
-    STRAPI_API: process.env.STRAPI_API,
+    STRAPI_API: process.env.STRAPI_API ?? 'not0set',
   },
   output: 'standalone',
   swcMinify: true,

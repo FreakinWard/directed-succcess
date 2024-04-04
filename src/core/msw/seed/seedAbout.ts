@@ -4,6 +4,8 @@ import { AboutResponse } from '@/types/strapi/StrapiResponse';
 
 const data = {
   paragraph: 'paragraph-value',
+  title: 'title-value',
+  secondaryTitle: 'secondary-title-value',
   image: {
     url: 'https://strapi-cdn.com/about-image.png',
     alternateText: 'image-alternate-text-value',
@@ -19,6 +21,8 @@ const graphqlResponse = {
     data: {
       attributes: {
         Paragraph: data.paragraph,
+        Title: data.title,
+        SecondaryTitle: data.secondaryTitle,
         whys: {
           data: [
             {

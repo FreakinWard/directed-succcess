@@ -9,6 +9,8 @@ export const graphQuery = gql`
       data {
         attributes {
           Paragraph
+          Title
+          SecondaryTitle
           whys {
             data {
               attributes {
@@ -43,6 +45,8 @@ const adapter = data => {
   const root = data.about.data.attributes;
 
   const paragraph = root.Paragraph;
+  const title = root.Title;
+  const secondaryTitle = root.SecondaryTitle;
   const image = root.Image.data.attributes;
 
   const whys = root.whys.data.map(x => x.attributes.Why);
@@ -50,6 +54,8 @@ const adapter = data => {
 
   return {
     paragraph,
+    title,
+    secondaryTitle,
     image,
     whys,
     whys2,

@@ -1,7 +1,26 @@
+import { useMemo } from 'react';
+
 import useHeader from '../../hooks/useHeader';
 
 export default function Header() {
   const { data: header } = useHeader();
+
+  const backgroundProps = useMemo(() => {
+    const backgroundImageUrl = header?.backgroundImage?.url;
+    const hasBackgroundImage = Boolean(backgroundImageUrl);
+
+    return hasBackgroundImage
+      ? {
+          background: `url(${header.backgroundImage.url})`,
+          WebkitBackgroundSize: 'cover',
+          MozBackgroundSize: 'cover',
+          backgroundSize: 'cover',
+          OBackgroundSize: 'cover',
+        }
+      : {
+          backgroundColor: '#e5e5e5',
+        };
+  }, [header]);
 
   return (
     <header id="header">
@@ -11,12 +30,7 @@ export default function Header() {
           display: 'table',
           width: '100%',
           padding: 0,
-          background: 'url(../img/intro-bg.jpg) center center no-repeat',
-          backgroundColor: '#e5e5e5',
-          WebkitBackgroundSize: 'cover',
-          MozBackgroundSize: 'cover',
-          backgroundSize: 'cover',
-          OBackgroundSize: 'cover',
+          ...backgroundProps,
         }}
       >
         <div className="intro" style={{ background: 'rgba(0, 0, 0, 0.2)' }}>

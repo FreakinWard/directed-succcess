@@ -17,6 +17,7 @@ export interface AboutResponse {
 export interface HeaderData {
   paragraph: string;
   title: string;
+  backgroundImage: ImageData;
 }
 
 export interface ServiceAreaData {

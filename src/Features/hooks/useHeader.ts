@@ -10,6 +10,16 @@ export const graphQuery = gql`
         attributes {
           Title
           Paragraph
+          BackgroundImage {
+            data {
+              attributes {
+                url
+                alternativeText
+                width
+                height
+              }
+            }
+          }
         }
       }
     }
@@ -21,10 +31,12 @@ const adapter = data => {
 
   const paragraph = root.Paragraph;
   const title = root.Title;
+  const backgroundImage = root.BackgroundImage.data.attributes;
 
   return {
     paragraph,
     title,
+    backgroundImage,
   };
 };
 

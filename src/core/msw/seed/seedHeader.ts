@@ -5,6 +5,12 @@ import { HeaderData } from '@/types/strapi/StrapiResponse';
 const data = {
   title: 'title-value',
   paragraph: 'paragraph-value',
+  backgroundImage: {
+    url: 'https://strapi-cdn.com/header-background-image.png',
+    alternateText: 'image-alternate-text-value',
+    width: 100,
+    height: 200,
+  },
 } as HeaderData;
 
 const graphqlResponse = {
@@ -13,10 +19,15 @@ const graphqlResponse = {
       attributes: {
         Title: data.title,
         Paragraph: data.paragraph,
+        BackgroundImage: {
+          data: {
+            attributes: data.backgroundImage,
+          },
+        },
       },
     },
   },
-};
+} as HeaderEntityResponse;
 
 export default {
   data,

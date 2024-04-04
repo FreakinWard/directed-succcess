@@ -5,8 +5,21 @@ export default function Header() {
 
   return (
     <header id="header">
-      <div className="intro">
-        <div className="overlay">
+      <div
+        className="intro"
+        style={{
+          display: 'table',
+          width: '100%',
+          padding: 0,
+          background: 'url(../img/intro-bg.jpg) center center no-repeat',
+          backgroundColor: '#e5e5e5',
+          WebkitBackgroundSize: 'cover',
+          MozBackgroundSize: 'cover',
+          backgroundSize: 'cover',
+          OBackgroundSize: 'cover',
+        }}
+      >
+        <div className="intro" style={{ background: 'rgba(0, 0, 0, 0.2)' }}>
           <div className="container">
             <div className="row">
               <div className="col-md-8 col-md-offset-2 intro-text">

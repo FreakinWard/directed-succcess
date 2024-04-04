@@ -29,6 +29,8 @@ export type About = {
   __typename?: 'About';
   Image: UploadFileEntityResponse;
   Paragraph?: Maybe<Scalars['String']['output']>;
+  SecondaryTitle?: Maybe<Scalars['String']['output']>;
+  Title: Scalars['String']['output'];
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -64,6 +66,8 @@ export type AboutEntityResponse = {
 export type AboutInput = {
   Image?: InputMaybe<Scalars['ID']['input']>;
   Paragraph?: InputMaybe<Scalars['String']['input']>;
+  SecondaryTitle?: InputMaybe<Scalars['String']['input']>;
+  Title?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   whys?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   whys2?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
@@ -212,6 +216,17 @@ export enum Enum_Service_Icon {
   WordPress = 'WordPress',
 }
 
+export enum Enum_Socialmedia_Platform {
+  Discord = 'Discord',
+  Facebook = 'Facebook',
+  Google = 'Google',
+  Instagram = 'Instagram',
+  LinkedIn = 'LinkedIn',
+  Slack = 'Slack',
+  Twitter = 'Twitter',
+  Youtube = 'Youtube',
+}
+
 export type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars['String']['input']>;
   caption?: InputMaybe<Scalars['String']['input']>;
@@ -299,6 +314,7 @@ export type GenericMorph =
   | PortfolioArea
   | Service
   | ServiceArea
+  | SocialMedia
   | TeamArea
   | TeamMember
   | Testimonial
@@ -311,6 +327,7 @@ export type GenericMorph =
 
 export type Header = {
   __typename?: 'Header';
+  BackgroundImageUrl?: Maybe<UploadFileEntityResponse>;
   Paragraph?: Maybe<Scalars['String']['output']>;
   Title?: Maybe<Scalars['String']['output']>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
@@ -330,6 +347,7 @@ export type HeaderEntityResponse = {
 };
 
 export type HeaderInput = {
+  BackgroundImageUrl?: InputMaybe<Scalars['ID']['input']>;
   Paragraph?: InputMaybe<Scalars['String']['input']>;
   Title?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -454,6 +472,7 @@ export type Mutation = {
   createGallery?: Maybe<GalleryEntityResponse>;
   createPortfolio?: Maybe<PortfolioEntityResponse>;
   createService?: Maybe<ServiceEntityResponse>;
+  createSocialMedia?: Maybe<SocialMediaEntityResponse>;
   createTeamMember?: Maybe<TeamMemberEntityResponse>;
   createTestimonial?: Maybe<TestimonialEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
@@ -471,6 +490,7 @@ export type Mutation = {
   deletePortfolioArea?: Maybe<PortfolioAreaEntityResponse>;
   deleteService?: Maybe<ServiceEntityResponse>;
   deleteServiceArea?: Maybe<ServiceAreaEntityResponse>;
+  deleteSocialMedia?: Maybe<SocialMediaEntityResponse>;
   deleteTeamArea?: Maybe<TeamAreaEntityResponse>;
   deleteTeamMember?: Maybe<TeamMemberEntityResponse>;
   deleteTestimonial?: Maybe<TestimonialEntityResponse>;
@@ -502,6 +522,7 @@ export type Mutation = {
   updatePortfolioArea?: Maybe<PortfolioAreaEntityResponse>;
   updateService?: Maybe<ServiceEntityResponse>;
   updateServiceArea?: Maybe<ServiceAreaEntityResponse>;
+  updateSocialMedia?: Maybe<SocialMediaEntityResponse>;
   updateTeamArea?: Maybe<TeamAreaEntityResponse>;
   updateTeamMember?: Maybe<TeamMemberEntityResponse>;
   updateTestimonial?: Maybe<TestimonialEntityResponse>;
@@ -535,6 +556,10 @@ export type MutationCreatePortfolioArgs = {
 
 export type MutationCreateServiceArgs = {
   data: ServiceInput;
+};
+
+export type MutationCreateSocialMediaArgs = {
+  data: SocialMediaInput;
 };
 
 export type MutationCreateTeamMemberArgs = {
@@ -574,6 +599,10 @@ export type MutationDeletePortfolioArgs = {
 };
 
 export type MutationDeleteServiceArgs = {
+  id: Scalars['ID']['input'];
+};
+
+export type MutationDeleteSocialMediaArgs = {
   id: Scalars['ID']['input'];
 };
 
@@ -677,6 +706,11 @@ export type MutationUpdateServiceArgs = {
 
 export type MutationUpdateServiceAreaArgs = {
   data: ServiceAreaInput;
+};
+
+export type MutationUpdateSocialMediaArgs = {
+  data: SocialMediaInput;
+  id: Scalars['ID']['input'];
 };
 
 export type MutationUpdateTeamAreaArgs = {
@@ -848,6 +882,8 @@ export type Query = {
   service?: Maybe<ServiceEntityResponse>;
   serviceArea?: Maybe<ServiceAreaEntityResponse>;
   services?: Maybe<ServiceEntityResponseCollection>;
+  socialMedia?: Maybe<SocialMediaEntityResponse>;
+  socialMedias?: Maybe<SocialMediaEntityResponseCollection>;
   teamArea?: Maybe<TeamAreaEntityResponse>;
   teamMember?: Maybe<TeamMemberEntityResponse>;
   teamMembers?: Maybe<TeamMemberEntityResponseCollection>;
@@ -933,6 +969,17 @@ export type QueryServiceAreaArgs = {
 
 export type QueryServicesArgs = {
   filters?: InputMaybe<ServiceFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type QuerySocialMediaArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type QuerySocialMediasArgs = {
+  filters?: InputMaybe<SocialMediaFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1098,6 +1145,52 @@ export type ServiceInput = {
 export type ServiceRelationResponseCollection = {
   __typename?: 'ServiceRelationResponseCollection';
   data: Array<ServiceEntity>;
+};
+
+export type SocialMedia = {
+  __typename?: 'SocialMedia';
+  Image: UploadFileEntityResponse;
+  Platform: Enum_Socialmedia_Platform;
+  PlatformUrl: Scalars['String']['output'];
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type SocialMediaEntity = {
+  __typename?: 'SocialMediaEntity';
+  attributes?: Maybe<SocialMedia>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type SocialMediaEntityResponse = {
+  __typename?: 'SocialMediaEntityResponse';
+  data?: Maybe<SocialMediaEntity>;
+};
+
+export type SocialMediaEntityResponseCollection = {
+  __typename?: 'SocialMediaEntityResponseCollection';
+  data: Array<SocialMediaEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type SocialMediaFiltersInput = {
+  Platform?: InputMaybe<StringFilterInput>;
+  PlatformUrl?: InputMaybe<StringFilterInput>;
+  and?: InputMaybe<Array<InputMaybe<SocialMediaFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<SocialMediaFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<SocialMediaFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type SocialMediaInput = {
+  Image?: InputMaybe<Scalars['ID']['input']>;
+  Platform?: InputMaybe<Enum_Socialmedia_Platform>;
+  PlatformUrl?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type StringFilterInput = {

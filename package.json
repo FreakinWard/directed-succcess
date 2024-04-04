@@ -36,7 +36,7 @@
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "pre-commit": "validate-branch-name && lint-staged",
-    "compile": "graphql-codegen --config codegen.ts"
+    "compile": "graphql-codegen --config codegen.ts && prettier --write ./types/strapi/__generated__"
   },
   "dependencies": {
     "@microsoft/applicationinsights-react-js": "^17.0.3",

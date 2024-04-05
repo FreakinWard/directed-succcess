@@ -7,6 +7,7 @@ export default class AppDocument extends Document {
       <Html lang="en" style={{ scrollBehavior: 'smooth' }}>
         <Head>
           <meta name="description" content="Training" />
+
           <link rel="icon" href="/favicon.ico" />
           <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
           <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css" />
@@ -22,6 +23,9 @@ export default class AppDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900"
             rel="stylesheet"
           />
+
+          <script type="text/javascript" src="js/jquery.1.11.1.js" defer />
+          <script type="text/javascript" src="js/bootstrap.js" defer />
         </Head>
         <body>
           <Main />

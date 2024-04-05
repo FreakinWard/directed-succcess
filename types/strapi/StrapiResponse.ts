@@ -1,4 +1,4 @@
-import { Enum_Socialmedia_Platform } from '@/types/strapi/__generated__/graphql';
+import { Enum_Socialmediaplatform_Type } from '@/types/strapi/__generated__/graphql';
 
 export interface ImageData {
   url: string;
@@ -78,7 +78,7 @@ export interface ContactData {
 
 export interface SocialMediaPlatformData {
   id: number;
-  platform: Enum_Socialmedia_Platform;
+  type: Enum_Socialmediaplatform_Type;
   url: string;
   image: ImageData;
 }

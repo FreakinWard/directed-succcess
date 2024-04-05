@@ -216,7 +216,7 @@ export enum Enum_Service_Icon {
   WordPress = 'WordPress',
 }
 
-export enum Enum_Socialmedia_Platform {
+export enum Enum_Socialmediaplatform_Type {
   Discord = 'Discord',
   Facebook = 'Facebook',
   Google = 'Google',
@@ -224,7 +224,7 @@ export enum Enum_Socialmedia_Platform {
   LinkedIn = 'LinkedIn',
   Slack = 'Slack',
   Twitter = 'Twitter',
-  Youtube = 'Youtube',
+  YouTube = 'YouTube',
 }
 
 export type FileInfoInput = {
@@ -314,7 +314,7 @@ export type GenericMorph =
   | PortfolioArea
   | Service
   | ServiceArea
-  | SocialMedia
+  | SocialMediaPlatform
   | TeamArea
   | TeamMember
   | Testimonial
@@ -472,7 +472,7 @@ export type Mutation = {
   createGallery?: Maybe<GalleryEntityResponse>;
   createPortfolio?: Maybe<PortfolioEntityResponse>;
   createService?: Maybe<ServiceEntityResponse>;
-  createSocialMedia?: Maybe<SocialMediaEntityResponse>;
+  createSocialMediaPlatform?: Maybe<SocialMediaPlatformEntityResponse>;
   createTeamMember?: Maybe<TeamMemberEntityResponse>;
   createTestimonial?: Maybe<TestimonialEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
@@ -490,7 +490,7 @@ export type Mutation = {
   deletePortfolioArea?: Maybe<PortfolioAreaEntityResponse>;
   deleteService?: Maybe<ServiceEntityResponse>;
   deleteServiceArea?: Maybe<ServiceAreaEntityResponse>;
-  deleteSocialMedia?: Maybe<SocialMediaEntityResponse>;
+  deleteSocialMediaPlatform?: Maybe<SocialMediaPlatformEntityResponse>;
   deleteTeamArea?: Maybe<TeamAreaEntityResponse>;
   deleteTeamMember?: Maybe<TeamMemberEntityResponse>;
   deleteTestimonial?: Maybe<TestimonialEntityResponse>;
@@ -522,7 +522,7 @@ export type Mutation = {
   updatePortfolioArea?: Maybe<PortfolioAreaEntityResponse>;
   updateService?: Maybe<ServiceEntityResponse>;
   updateServiceArea?: Maybe<ServiceAreaEntityResponse>;
-  updateSocialMedia?: Maybe<SocialMediaEntityResponse>;
+  updateSocialMediaPlatform?: Maybe<SocialMediaPlatformEntityResponse>;
   updateTeamArea?: Maybe<TeamAreaEntityResponse>;
   updateTeamMember?: Maybe<TeamMemberEntityResponse>;
   updateTestimonial?: Maybe<TestimonialEntityResponse>;
@@ -558,8 +558,8 @@ export type MutationCreateServiceArgs = {
   data: ServiceInput;
 };
 
-export type MutationCreateSocialMediaArgs = {
-  data: SocialMediaInput;
+export type MutationCreateSocialMediaPlatformArgs = {
+  data: SocialMediaPlatformInput;
 };
 
 export type MutationCreateTeamMemberArgs = {
@@ -602,7 +602,7 @@ export type MutationDeleteServiceArgs = {
   id: Scalars['ID']['input'];
 };
 
-export type MutationDeleteSocialMediaArgs = {
+export type MutationDeleteSocialMediaPlatformArgs = {
   id: Scalars['ID']['input'];
 };
 
@@ -708,8 +708,8 @@ export type MutationUpdateServiceAreaArgs = {
   data: ServiceAreaInput;
 };
 
-export type MutationUpdateSocialMediaArgs = {
-  data: SocialMediaInput;
+export type MutationUpdateSocialMediaPlatformArgs = {
+  data: SocialMediaPlatformInput;
   id: Scalars['ID']['input'];
 };
 
@@ -882,8 +882,8 @@ export type Query = {
   service?: Maybe<ServiceEntityResponse>;
   serviceArea?: Maybe<ServiceAreaEntityResponse>;
   services?: Maybe<ServiceEntityResponseCollection>;
-  socialMedia?: Maybe<SocialMediaEntityResponse>;
-  socialMedias?: Maybe<SocialMediaEntityResponseCollection>;
+  socialMediaPlatform?: Maybe<SocialMediaPlatformEntityResponse>;
+  socialMediaPlatforms?: Maybe<SocialMediaPlatformEntityResponseCollection>;
   teamArea?: Maybe<TeamAreaEntityResponse>;
   teamMember?: Maybe<TeamMemberEntityResponse>;
   teamMembers?: Maybe<TeamMemberEntityResponseCollection>;
@@ -974,12 +974,12 @@ export type QueryServicesArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type QuerySocialMediaArgs = {
+export type QuerySocialMediaPlatformArgs = {
   id?: InputMaybe<Scalars['ID']['input']>;
 };
 
-export type QuerySocialMediasArgs = {
-  filters?: InputMaybe<SocialMediaFiltersInput>;
+export type QuerySocialMediaPlatformsArgs = {
+  filters?: InputMaybe<SocialMediaPlatformFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1147,50 +1147,50 @@ export type ServiceRelationResponseCollection = {
   data: Array<ServiceEntity>;
 };
 
-export type SocialMedia = {
-  __typename?: 'SocialMedia';
+export type SocialMediaPlatform = {
+  __typename?: 'SocialMediaPlatform';
   Image: UploadFileEntityResponse;
-  Platform: Enum_Socialmedia_Platform;
+  Type: Enum_Socialmediaplatform_Type;
+  Url: Scalars['String']['output'];
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
-  url: Scalars['String']['output'];
 };
 
-export type SocialMediaEntity = {
-  __typename?: 'SocialMediaEntity';
-  attributes?: Maybe<SocialMedia>;
+export type SocialMediaPlatformEntity = {
+  __typename?: 'SocialMediaPlatformEntity';
+  attributes?: Maybe<SocialMediaPlatform>;
   id?: Maybe<Scalars['ID']['output']>;
 };
 
-export type SocialMediaEntityResponse = {
-  __typename?: 'SocialMediaEntityResponse';
-  data?: Maybe<SocialMediaEntity>;
+export type SocialMediaPlatformEntityResponse = {
+  __typename?: 'SocialMediaPlatformEntityResponse';
+  data?: Maybe<SocialMediaPlatformEntity>;
 };
 
-export type SocialMediaEntityResponseCollection = {
-  __typename?: 'SocialMediaEntityResponseCollection';
-  data: Array<SocialMediaEntity>;
+export type SocialMediaPlatformEntityResponseCollection = {
+  __typename?: 'SocialMediaPlatformEntityResponseCollection';
+  data: Array<SocialMediaPlatformEntity>;
   meta: ResponseCollectionMeta;
 };
 
-export type SocialMediaFiltersInput = {
-  Platform?: InputMaybe<StringFilterInput>;
-  and?: InputMaybe<Array<InputMaybe<SocialMediaFiltersInput>>>;
+export type SocialMediaPlatformFiltersInput = {
+  Type?: InputMaybe<StringFilterInput>;
+  Url?: InputMaybe<StringFilterInput>;
+  and?: InputMaybe<Array<InputMaybe<SocialMediaPlatformFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
-  not?: InputMaybe<SocialMediaFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<SocialMediaFiltersInput>>>;
+  not?: InputMaybe<SocialMediaPlatformFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<SocialMediaPlatformFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
-  url?: InputMaybe<StringFilterInput>;
 };
 
-export type SocialMediaInput = {
+export type SocialMediaPlatformInput = {
   Image?: InputMaybe<Scalars['ID']['input']>;
-  Platform?: InputMaybe<Enum_Socialmedia_Platform>;
+  Type?: InputMaybe<Enum_Socialmediaplatform_Type>;
+  Url?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
-  url?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type StringFilterInput = {

@@ -1,4 +1,5 @@
 import useContact from '../../hooks/useContact';
+import SocialMedia from './SocialMedia';
 
 // const initialState = {
 //   name: '',
@@ -124,25 +125,7 @@ export default function Contact() {
           </div>
           <div className="col-md-12">
             <div className="row">
-              <div className="social">
-                <ul>
-                  <li>
-                    <a href={contact?.facebook}>
-                      <i className="fa fa-facebook"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href={contact?.twitter}>
-                      <i className="fa fa-twitter"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href={contact?.youtube}>
-                      <i className="fa fa-youtube"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
+              <SocialMedia />
             </div>
           </div>
         </div>

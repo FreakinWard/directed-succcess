@@ -4,13 +4,13 @@ import useStrapiCms from '@/hooks/useStrapiCms';
 import { SocialMediaPlatformData } from '@/types/strapi/StrapiResponse';
 
 export const graphQuery = gql`
-  query SocialMedias {
-    socialMedias {
+  query SocialMediaPlatforms {
+    socialMediaPlatforms {
       data {
         id
         attributes {
-          Platform
-          url
+          Type
+          Url
           Image {
             data {
               attributes {
@@ -28,12 +28,12 @@ export const graphQuery = gql`
 `;
 
 const adapter = data => {
-  const root = data.socialMedias.data;
+  const root = data.socialMediaPlatforms.data;
 
   return root.map(platform => ({
     id: platform.id,
-    platform: platform.attributes.Platform,
-    url: platform.attributes.url,
+    type: platform.attributes.Type,
+    url: platform.attributes.Url,
     image: platform.attributes.Image.data.attributes,
   }));
 };

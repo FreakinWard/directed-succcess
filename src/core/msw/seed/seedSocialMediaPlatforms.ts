@@ -1,11 +1,14 @@
 import { SeedGraphQLQuery } from '@/types/seed/SeedGraphQLQuery';
-import { SocialMediaEntityResponse } from '@/types/strapi/__generated__/graphql';
+import {
+  Enum_Socialmediaplatform_Type,
+  SocialMediaPlatformEntityResponse,
+} from '@/types/strapi/__generated__/graphql';
 import { SocialMediaPlatformData } from '@/types/strapi/StrapiResponse';
 
-const data = [
+const data: SocialMediaPlatformData[] = [
   {
     id: 1,
-    platform: 'LinkedIn',
+    type: Enum_Socialmediaplatform_Type.LinkedIn,
     url: 'linkedin.com',
     image: {
       url: 'https://strapi-cdn.com/linkedin-image.png',
@@ -16,7 +19,7 @@ const data = [
   },
   {
     id: 2,
-    platform: 'Facebook',
+    type: Enum_Socialmediaplatform_Type.Facebook,
     url: 'facebook.com',
     image: {
       url: 'https://strapi-cdn.com/facebook-image.png',
@@ -25,15 +28,15 @@ const data = [
       height: 200,
     },
   },
-] as SocialMediaPlatformData[];
+];
 
 const graphqlResponse = {
-  socialMedias: {
+  socialMediaPlatforms: {
     data: data.map(item => ({
       id: item.id,
       attributes: {
-        Platform: item.platform,
-        url: item.url,
+        Type: item.type,
+        Url: item.url,
         Image: {
           data: {
             attributes: item.image,
@@ -42,10 +45,10 @@ const graphqlResponse = {
       },
     })),
   },
-} as SocialMediaEntityResponse;
+};
 
 export default {
   data,
-  queryName: 'SocialMedias',
+  queryName: 'SocialMediaPlatforms',
   graphqlResponse,
-} as SeedGraphQLQuery<SocialMediaEntityResponse, SocialMediaPlatformData[]>;
+} as SeedGraphQLQuery<SocialMediaPlatformEntityResponse, SocialMediaPlatformData[]>;

@@ -29,6 +29,7 @@ export type About = {
   __typename?: 'About';
   Image: UploadFileEntityResponse;
   Paragraph?: Maybe<Scalars['String']['output']>;
+  SecondaryParagraph?: Maybe<Scalars['String']['output']>;
   SecondaryTitle?: Maybe<Scalars['String']['output']>;
   Title: Scalars['String']['output'];
   createdAt?: Maybe<Scalars['DateTime']['output']>;
@@ -66,6 +67,7 @@ export type AboutEntityResponse = {
 export type AboutInput = {
   Image?: InputMaybe<Scalars['ID']['input']>;
   Paragraph?: InputMaybe<Scalars['String']['input']>;
+  SecondaryParagraph?: InputMaybe<Scalars['String']['input']>;
   SecondaryTitle?: InputMaybe<Scalars['String']['input']>;
   Title?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -148,12 +150,9 @@ export type Contact = {
   __typename?: 'Contact';
   Address: Scalars['String']['output'];
   Email: Scalars['String']['output'];
-  Facebook: Scalars['String']['output'];
   Paragraph: Scalars['String']['output'];
   Phone: Scalars['String']['output'];
   Title: Scalars['String']['output'];
-  Twitter: Scalars['String']['output'];
-  Youtube: Scalars['String']['output'];
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -173,12 +172,9 @@ export type ContactEntityResponse = {
 export type ContactInput = {
   Address?: InputMaybe<Scalars['String']['input']>;
   Email?: InputMaybe<Scalars['String']['input']>;
-  Facebook?: InputMaybe<Scalars['String']['input']>;
   Paragraph?: InputMaybe<Scalars['String']['input']>;
   Phone?: InputMaybe<Scalars['String']['input']>;
   Title?: InputMaybe<Scalars['String']['input']>;
-  Twitter?: InputMaybe<Scalars['String']['input']>;
-  Youtube?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 

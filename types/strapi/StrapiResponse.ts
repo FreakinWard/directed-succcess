@@ -9,11 +9,10 @@ export interface ImageData {
 
 export interface AboutResponse {
   paragraph: string;
+  secondaryParagraph: string;
   title: string;
   secondaryTitle?: string;
   image: ImageData;
-  whys: string[];
-  whys2: string[];
 }
 
 export interface HeaderData {

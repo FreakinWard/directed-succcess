@@ -16,8 +16,9 @@ export interface AboutResponse {
 }
 
 export interface HeaderData {
-  paragraph: string;
   title: string;
+  secondaryTitle?: string;
+  paragraph: string;
   backgroundImage: ImageData;
 }
 

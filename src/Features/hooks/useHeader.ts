@@ -9,6 +9,7 @@ export const graphQuery = gql`
       data {
         attributes {
           Title
+          SecondaryTitle
           Paragraph
           BackgroundImage {
             data {
@@ -29,13 +30,15 @@ export const graphQuery = gql`
 const adapter = data => {
   const root = data.header.data.attributes;
 
-  const paragraph = root.Paragraph;
   const title = root.Title;
+  const secondaryTitle = root.SecondaryTitle;
+  const paragraph = root.Paragraph;
   const backgroundImage = root.BackgroundImage.data.attributes;
 
   return {
-    paragraph,
     title,
+    secondaryTitle,
+    paragraph,
     backgroundImage,
   };
 };

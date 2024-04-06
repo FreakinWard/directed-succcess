@@ -22,6 +22,8 @@ export default function Header() {
         };
   }, [header]);
 
+  if (!header) return null;
+
   return (
     <header id="header">
       <div
@@ -41,6 +43,7 @@ export default function Header() {
                   {header?.title}
                   <span></span>
                 </h1>
+                {header.secondaryTitle ? <h2>{header.secondaryTitle}</h2> : null}
                 <p>{header?.paragraph}</p>
                 <a href="#services" className="btn btn-custom btn-lg page-scroll">
                   Learn More

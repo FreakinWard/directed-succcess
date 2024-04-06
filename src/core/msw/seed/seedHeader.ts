@@ -4,6 +4,7 @@ import { HeaderData } from '@/types/strapi/StrapiResponse';
 
 const data = {
   title: 'title-value',
+  secondaryTitle: 'secondary-title-value',
   paragraph: 'paragraph-value',
   backgroundImage: {
     url: 'https://strapi-cdn.com/header-background-image.png',
@@ -18,6 +19,7 @@ const graphqlResponse = {
     data: {
       attributes: {
         Title: data.title,
+        SecondaryTitle: data.secondaryTitle,
         Paragraph: data.paragraph,
         BackgroundImage: {
           data: {

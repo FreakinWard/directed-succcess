@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import pascalCase from 'pascalcase';
 
+import { useTelemetry } from '@/components/AppTelemetry/TelemetryProvider';
+
 export function getStaticProps() {
   const healthData = {
     name: process.env.appName,
@@ -8,6 +10,7 @@ export function getStaticProps() {
     buildNumber: process.env.ciBuildNumber,
     buildJobUrl: process.env.ciBuildJobUrl,
     strapiApi: process.env.STRAPI_API,
+    appInsights: process.env.APPLICATIONINSIGHTS_CONNECTION_STRING || 'not-set',
     status: 'ok',
     timestamp: new Date().toISOString(),
   };
@@ -20,9 +23,16 @@ export function getStaticProps() {
 }
 
 export default function Health({ health }) {
+  const telemetry = useTelemetry();
+
+  const handleClick = () => {
+    telemetry.trackEvent({ name: 'manual-event' });
+  };
+
   return (
     <div>
       <h2>Health Check</h2>
+      <button onClick={handleClick}>Manual Event</button>
       {Object.keys(health)?.map((prop, index) => {
         if (prop === 'buildJobUrl')
           return (

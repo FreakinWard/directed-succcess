@@ -325,6 +325,7 @@ export type Header = {
   __typename?: 'Header';
   BackgroundImage?: Maybe<UploadFileEntityResponse>;
   Paragraph?: Maybe<Scalars['String']['output']>;
+  SecondaryTitle?: Maybe<Scalars['String']['output']>;
   Title?: Maybe<Scalars['String']['output']>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -345,6 +346,7 @@ export type HeaderEntityResponse = {
 export type HeaderInput = {
   BackgroundImage?: InputMaybe<Scalars['ID']['input']>;
   Paragraph?: InputMaybe<Scalars['String']['input']>;
+  SecondaryTitle?: InputMaybe<Scalars['String']['input']>;
   Title?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };

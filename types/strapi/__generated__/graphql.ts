@@ -35,22 +35,6 @@ export type About = {
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
-  whys?: Maybe<AboutWhyRelationResponseCollection>;
-  whys2?: Maybe<AboutWhyRelationResponseCollection>;
-};
-
-export type AboutWhysArgs = {
-  filters?: InputMaybe<AboutWhyFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-export type AboutWhys2Args = {
-  filters?: InputMaybe<AboutWhyFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type AboutEntity = {
@@ -71,54 +55,6 @@ export type AboutInput = {
   SecondaryTitle?: InputMaybe<Scalars['String']['input']>;
   Title?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
-  whys?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  whys2?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-};
-
-export type AboutWhy = {
-  __typename?: 'AboutWhy';
-  Why: Scalars['String']['output'];
-  createdAt?: Maybe<Scalars['DateTime']['output']>;
-  publishedAt?: Maybe<Scalars['DateTime']['output']>;
-  updatedAt?: Maybe<Scalars['DateTime']['output']>;
-};
-
-export type AboutWhyEntity = {
-  __typename?: 'AboutWhyEntity';
-  attributes?: Maybe<AboutWhy>;
-  id?: Maybe<Scalars['ID']['output']>;
-};
-
-export type AboutWhyEntityResponse = {
-  __typename?: 'AboutWhyEntityResponse';
-  data?: Maybe<AboutWhyEntity>;
-};
-
-export type AboutWhyEntityResponseCollection = {
-  __typename?: 'AboutWhyEntityResponseCollection';
-  data: Array<AboutWhyEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type AboutWhyFiltersInput = {
-  Why?: InputMaybe<StringFilterInput>;
-  and?: InputMaybe<Array<InputMaybe<AboutWhyFiltersInput>>>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  not?: InputMaybe<AboutWhyFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<AboutWhyFiltersInput>>>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-
-export type AboutWhyInput = {
-  Why?: InputMaybe<Scalars['String']['input']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
-};
-
-export type AboutWhyRelationResponseCollection = {
-  __typename?: 'AboutWhyRelationResponseCollection';
-  data: Array<AboutWhyEntity>;
 };
 
 export type BooleanFilterInput = {
@@ -301,7 +237,6 @@ export type GalleryInput = {
 
 export type GenericMorph =
   | About
-  | AboutWhy
   | Contact
   | Gallery
   | Header
@@ -466,7 +401,6 @@ export type Mutation = {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
-  createAboutWhy?: Maybe<AboutWhyEntityResponse>;
   createGallery?: Maybe<GalleryEntityResponse>;
   createPortfolio?: Maybe<PortfolioEntityResponse>;
   createService?: Maybe<ServiceEntityResponse>;
@@ -480,7 +414,6 @@ export type Mutation = {
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   deleteAbout?: Maybe<AboutEntityResponse>;
-  deleteAboutWhy?: Maybe<AboutWhyEntityResponse>;
   deleteContact?: Maybe<ContactEntityResponse>;
   deleteGallery?: Maybe<GalleryEntityResponse>;
   deleteHeader?: Maybe<HeaderEntityResponse>;
@@ -511,7 +444,6 @@ export type Mutation = {
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   updateAbout?: Maybe<AboutEntityResponse>;
-  updateAboutWhy?: Maybe<AboutWhyEntityResponse>;
   updateContact?: Maybe<ContactEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updateGallery?: Maybe<GalleryEntityResponse>;
@@ -538,10 +470,6 @@ export type MutationChangePasswordArgs = {
   currentPassword: Scalars['String']['input'];
   password: Scalars['String']['input'];
   passwordConfirmation: Scalars['String']['input'];
-};
-
-export type MutationCreateAboutWhyArgs = {
-  data: AboutWhyInput;
 };
 
 export type MutationCreateGalleryArgs = {
@@ -582,10 +510,6 @@ export type MutationCreateUsersPermissionsRoleArgs = {
 
 export type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput;
-};
-
-export type MutationDeleteAboutWhyArgs = {
-  id: Scalars['ID']['input'];
 };
 
 export type MutationDeleteGalleryArgs = {
@@ -663,11 +587,6 @@ export type MutationResetPasswordArgs = {
 
 export type MutationUpdateAboutArgs = {
   data: AboutInput;
-};
-
-export type MutationUpdateAboutWhyArgs = {
-  data: AboutWhyInput;
-  id: Scalars['ID']['input'];
 };
 
 export type MutationUpdateContactArgs = {
@@ -865,8 +784,6 @@ export enum PublicationState {
 export type Query = {
   __typename?: 'Query';
   about?: Maybe<AboutEntityResponse>;
-  aboutWhy?: Maybe<AboutWhyEntityResponse>;
-  aboutWhys?: Maybe<AboutWhyEntityResponseCollection>;
   contact?: Maybe<ContactEntityResponse>;
   galleries?: Maybe<GalleryEntityResponseCollection>;
   gallery?: Maybe<GalleryEntityResponse>;
@@ -900,17 +817,6 @@ export type Query = {
 
 export type QueryAboutArgs = {
   publicationState?: InputMaybe<PublicationState>;
-};
-
-export type QueryAboutWhyArgs = {
-  id?: InputMaybe<Scalars['ID']['input']>;
-};
-
-export type QueryAboutWhysArgs = {
-  filters?: InputMaybe<AboutWhyFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type QueryContactArgs = {
@@ -1061,6 +967,7 @@ export type ResponseCollectionMeta = {
 export type Service = {
   __typename?: 'Service';
   Icon: Enum_Service_Icon;
+  Image: UploadFileEntityResponse;
   Name: Scalars['String']['output'];
   Text: Scalars['String']['output'];
   createdAt?: Maybe<Scalars['DateTime']['output']>;
@@ -1135,6 +1042,7 @@ export type ServiceFiltersInput = {
 
 export type ServiceInput = {
   Icon?: InputMaybe<Enum_Service_Icon>;
+  Image?: InputMaybe<Scalars['ID']['input']>;
   Name?: InputMaybe<Scalars['String']['input']>;
   Text?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;

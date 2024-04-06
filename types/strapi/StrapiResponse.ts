@@ -27,9 +27,9 @@ export interface ServiceAreaData {
   paragraph: string;
   services: {
     id: number;
-    icon: string;
     name: string;
     text: string;
+    image: ImageData;
   }[];
 }
 

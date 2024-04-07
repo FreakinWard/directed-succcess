@@ -22,6 +22,33 @@ export function getStaticProps() {
   };
 }
 
+const LabelItem = ({ children, label }) => (
+  <div>
+    <span>
+      <strong>{`${pascalCase(label)}: `}</strong>
+      {children}
+    </span>
+  </div>
+);
+
+const LabelLinkItem = ({ href, children, label }) => (
+  <div>
+    <span>
+      <strong>{`${pascalCase(label)}: `}</strong>
+      <Link href={href}>{children}</Link>
+    </span>
+  </div>
+);
+
+const LabelTimeItem = ({ children, label }) => (
+  <div>
+    <span>
+      <strong>{`${pascalCase(label)}: `}</strong>
+      {new Date(children).toLocaleString()}
+    </span>
+  </div>
+);
+
 export default function Health({ health }) {
   const telemetry = useTelemetry();
 
@@ -36,21 +63,22 @@ export default function Health({ health }) {
       {Object.keys(health)?.map((prop, index) => {
         if (prop === 'buildJobUrl')
           return (
-            <div key={index}>
-              <span>
-                <strong>{`${pascalCase(prop)}: `}</strong>
-                <Link href={health[prop]}>{health[prop]}</Link>
-              </span>
-            </div>
+            <LabelLinkItem key={index} href={health[prop]} label={prop}>
+              {health[prop]}
+            </LabelLinkItem>
+          );
+
+        if (prop === 'timestamp')
+          return (
+            <LabelTimeItem key={index} label={prop}>
+              {health[prop]}
+            </LabelTimeItem>
           );
 
         return (
-          <div key={prop}>
-            <span>
-              <strong>{`${pascalCase(prop)}: `}</strong>
-              {`${health[prop]}`}
-            </span>
-          </div>
+          <LabelItem key={prop} label={prop}>
+            {health[prop]}
+          </LabelItem>
         );
       })}
     </div>

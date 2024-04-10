@@ -48,7 +48,6 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
-          production_branch: 'dev'
         env:
           STRAPI_API: "https://cms-strapi-server.azurewebsites.net"
           APPLICATIONINSIGHTS_CONNECTION_STRING: InstrumentationKey=d783744f-2519-49e0-87a5-06a1d7546edf;IngestionEndpoint=https://eastus2-3.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus2.livediagnostics.monitor.azure.com/

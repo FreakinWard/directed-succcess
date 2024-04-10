@@ -14,5 +14,6 @@ cypress/reports/
 html-report
 node_modules
 out
+public/
 package-lock.json
 *.bicep

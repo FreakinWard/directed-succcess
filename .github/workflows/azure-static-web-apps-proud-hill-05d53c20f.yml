@@ -55,7 +55,7 @@ jobs:
 
       - name: Smoke Test
         timeout-minutes: 1
-        run: ./smokeTest.sh
+        run: $(GITHUB_WORKSPACE)/.github/workflows/scripts/smokeTest.sh
 
   close_pull_request_job:
     if: github.event.pull_request.merged == true

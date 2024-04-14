@@ -4,6 +4,8 @@ import ImageLink from './ImageLink';
 export default function Portfolio() {
   const { data: portfolioArea } = usePortfolioArea();
 
+  if (!portfolioArea) return null;
+
   return (
     <div id="portfolio" className="text-center">
       <div className="container">

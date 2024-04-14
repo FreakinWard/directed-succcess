@@ -5,6 +5,8 @@ import useServiceArea from '../../hooks/useServiceArea';
 export default function Services() {
   const { data: serviceArea } = useServiceArea();
 
+  if (!serviceArea) return null;
+
   return (
     <div id="services" className="text-center">
       <div className="container">

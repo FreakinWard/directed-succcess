@@ -23,15 +23,13 @@ const mockRequestGet = (url, responseData, statusCode = 200) => {
   return rest.get(url, mockHandler(responseData, statusCode));
 };
 
-const mockGraphQL = <T, U>(
-  { queryName, data, graphqlResponse }: SeedGraphQLQuery<T, U>,
-  url = `${process.env.STRAPI_API}/graphql`
+export const mockGraphQL = <T, U>(
+  { queryName, graphqlResponse }: SeedGraphQLQuery<T, U>,
+  url = `*/graphql`
 ) => {
   const resource = graphql.link(url);
 
-  const ctxData = graphqlResponse ?? data;
-
-  return resource.query(queryName, (_req, res, ctx) => res(ctx.data(ctxData)));
+  return resource.query(queryName, (_req, res, ctx) => res(ctx.data(graphqlResponse)));
 };
 const mockPassThroughGet = url => rest.get(url, req => req.passthrough());
 

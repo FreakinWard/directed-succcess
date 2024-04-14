@@ -5,6 +5,8 @@ import useTestimonialArea from '../../hooks/useTestimonialArea';
 export default function Testimonials() {
   const { data: testimonialArea } = useTestimonialArea();
 
+  if (!testimonialArea) return null;
+
   return (
     <div id="testimonials">
       <div className="container">

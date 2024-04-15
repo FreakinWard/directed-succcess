@@ -18,8 +18,9 @@ export function getStaticProps() {
   return {
     props: {
       health: healthData,
+      fallback: true,
     },
-    revalidate: 86400,
+    // revalidate: 86400,
   };
 }
 

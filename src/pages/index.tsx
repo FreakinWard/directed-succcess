@@ -15,8 +15,9 @@ import { graphQuery as testimonialAreaQuery } from '../Features/hooks/useTestimo
 interface Props {
   props: {
     dehydratedState: DehydratedState;
+    fallback: boolean;
   };
-  revalidate: number | boolean;
+  // revalidate: number | boolean;
 }
 
 const prefetchConfig = (queryName, query) => ({
@@ -41,8 +42,9 @@ export async function getStaticProps(): Promise<Props> {
   return {
     props: {
       dehydratedState: dehydrate(queryClient),
+      fallback: true,
     },
-    revalidate: 86400,
+    // revalidate: 86400,
   };
 }
 

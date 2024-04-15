@@ -18,6 +18,10 @@ module.exports = withBundleAnalyzer({
   },
   output: 'standalone',
   swcMinify: true,
+  generateBuildId: async () => {
+    // This could be anything, using the latest git hash
+    return packageJson.buildNumber;
+  },
   eslint: {
     ignoreDuringBuilds: isProduction,
   },

@@ -16,6 +16,7 @@ interface Props {
   props: {
     dehydratedState: DehydratedState;
   };
+  revalidate: boolean;
 }
 
 const prefetchConfig = (queryName, query) => ({
@@ -41,6 +42,7 @@ export async function getStaticProps(): Promise<Props> {
     props: {
       dehydratedState: dehydrate(queryClient),
     },
+    revalidate: false,
   };
 }
 

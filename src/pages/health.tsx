@@ -19,7 +19,7 @@ export function getStaticProps() {
     props: {
       health: healthData,
     },
-    revalidate: false,
+    revalidate: 86400,
   };
 }
 

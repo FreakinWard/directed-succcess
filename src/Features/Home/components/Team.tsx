@@ -5,6 +5,8 @@ import useTeamArea from '../../hooks/useTeamArea';
 export default function Team() {
   const { data: teamArea } = useTeamArea();
 
+  if (!teamArea) return null;
+
   return (
     <div id="team" className="text-center">
       <div className="container">

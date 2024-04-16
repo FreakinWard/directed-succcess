@@ -13,9 +13,6 @@ export const graphQuery = gql`
           Address
           Phone
           Email
-          Facebook
-          Twitter
-          Youtube
         }
       }
     }

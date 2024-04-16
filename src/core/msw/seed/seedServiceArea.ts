@@ -8,9 +8,14 @@ const data = {
   services: [
     {
       id: 1,
-      icon: 'icon-class-name',
       name: 'service-name',
       text: 'text-description',
+      image: {
+        url: 'https://strapi-cdn.com/about-image.png',
+        alternateText: 'image-alternate-text-value',
+        width: 100,
+        height: 200,
+      },
     },
   ],
 } as ServiceAreaData;
@@ -27,9 +32,14 @@ const graphqlResponse = {
             {
               id: data.services[0].id,
               attributes: {
-                Icon: data.services[0].icon,
                 Name: data.services[0].name,
                 Text: data.services[0].text,
+                Image: {
+                  data: {
+                    // @ts-ignore
+                    attributes: data.services[0].image,
+                  },
+                },
               },
             },
           ],

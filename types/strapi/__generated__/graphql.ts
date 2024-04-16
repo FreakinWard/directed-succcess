@@ -29,25 +29,12 @@ export type About = {
   __typename?: 'About';
   Image: UploadFileEntityResponse;
   Paragraph?: Maybe<Scalars['String']['output']>;
+  SecondaryParagraph?: Maybe<Scalars['String']['output']>;
+  SecondaryTitle?: Maybe<Scalars['String']['output']>;
+  Title: Scalars['String']['output'];
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
-  whys?: Maybe<AboutWhyRelationResponseCollection>;
-  whys2?: Maybe<AboutWhyRelationResponseCollection>;
-};
-
-export type AboutWhysArgs = {
-  filters?: InputMaybe<AboutWhyFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-export type AboutWhys2Args = {
-  filters?: InputMaybe<AboutWhyFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type AboutEntity = {
@@ -64,55 +51,10 @@ export type AboutEntityResponse = {
 export type AboutInput = {
   Image?: InputMaybe<Scalars['ID']['input']>;
   Paragraph?: InputMaybe<Scalars['String']['input']>;
+  SecondaryParagraph?: InputMaybe<Scalars['String']['input']>;
+  SecondaryTitle?: InputMaybe<Scalars['String']['input']>;
+  Title?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
-  whys?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  whys2?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-};
-
-export type AboutWhy = {
-  __typename?: 'AboutWhy';
-  Why: Scalars['String']['output'];
-  createdAt?: Maybe<Scalars['DateTime']['output']>;
-  publishedAt?: Maybe<Scalars['DateTime']['output']>;
-  updatedAt?: Maybe<Scalars['DateTime']['output']>;
-};
-
-export type AboutWhyEntity = {
-  __typename?: 'AboutWhyEntity';
-  attributes?: Maybe<AboutWhy>;
-  id?: Maybe<Scalars['ID']['output']>;
-};
-
-export type AboutWhyEntityResponse = {
-  __typename?: 'AboutWhyEntityResponse';
-  data?: Maybe<AboutWhyEntity>;
-};
-
-export type AboutWhyEntityResponseCollection = {
-  __typename?: 'AboutWhyEntityResponseCollection';
-  data: Array<AboutWhyEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type AboutWhyFiltersInput = {
-  Why?: InputMaybe<StringFilterInput>;
-  and?: InputMaybe<Array<InputMaybe<AboutWhyFiltersInput>>>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  not?: InputMaybe<AboutWhyFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<AboutWhyFiltersInput>>>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-
-export type AboutWhyInput = {
-  Why?: InputMaybe<Scalars['String']['input']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
-};
-
-export type AboutWhyRelationResponseCollection = {
-  __typename?: 'AboutWhyRelationResponseCollection';
-  data: Array<AboutWhyEntity>;
 };
 
 export type BooleanFilterInput = {
@@ -144,12 +86,9 @@ export type Contact = {
   __typename?: 'Contact';
   Address: Scalars['String']['output'];
   Email: Scalars['String']['output'];
-  Facebook: Scalars['String']['output'];
   Paragraph: Scalars['String']['output'];
   Phone: Scalars['String']['output'];
   Title: Scalars['String']['output'];
-  Twitter: Scalars['String']['output'];
-  Youtube: Scalars['String']['output'];
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -169,12 +108,9 @@ export type ContactEntityResponse = {
 export type ContactInput = {
   Address?: InputMaybe<Scalars['String']['input']>;
   Email?: InputMaybe<Scalars['String']['input']>;
-  Facebook?: InputMaybe<Scalars['String']['input']>;
   Paragraph?: InputMaybe<Scalars['String']['input']>;
   Phone?: InputMaybe<Scalars['String']['input']>;
   Title?: InputMaybe<Scalars['String']['input']>;
-  Twitter?: InputMaybe<Scalars['String']['input']>;
-  Youtube?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
@@ -210,6 +146,17 @@ export enum Enum_Service_Icon {
   PieChart = 'PieChart',
   Plane = 'Plane',
   WordPress = 'WordPress',
+}
+
+export enum Enum_Socialmediaplatform_Type {
+  Discord = 'Discord',
+  Facebook = 'Facebook',
+  Google = 'Google',
+  Instagram = 'Instagram',
+  LinkedIn = 'LinkedIn',
+  Slack = 'Slack',
+  Twitter = 'Twitter',
+  YouTube = 'YouTube',
 }
 
 export type FileInfoInput = {
@@ -290,7 +237,6 @@ export type GalleryInput = {
 
 export type GenericMorph =
   | About
-  | AboutWhy
   | Contact
   | Gallery
   | Header
@@ -299,6 +245,7 @@ export type GenericMorph =
   | PortfolioArea
   | Service
   | ServiceArea
+  | SocialMediaPlatform
   | TeamArea
   | TeamMember
   | Testimonial
@@ -311,7 +258,9 @@ export type GenericMorph =
 
 export type Header = {
   __typename?: 'Header';
+  BackgroundImage?: Maybe<UploadFileEntityResponse>;
   Paragraph?: Maybe<Scalars['String']['output']>;
+  SecondaryTitle?: Maybe<Scalars['String']['output']>;
   Title?: Maybe<Scalars['String']['output']>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -330,7 +279,9 @@ export type HeaderEntityResponse = {
 };
 
 export type HeaderInput = {
+  BackgroundImage?: InputMaybe<Scalars['ID']['input']>;
   Paragraph?: InputMaybe<Scalars['String']['input']>;
+  SecondaryTitle?: InputMaybe<Scalars['String']['input']>;
   Title?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
@@ -450,10 +401,10 @@ export type Mutation = {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
-  createAboutWhy?: Maybe<AboutWhyEntityResponse>;
   createGallery?: Maybe<GalleryEntityResponse>;
   createPortfolio?: Maybe<PortfolioEntityResponse>;
   createService?: Maybe<ServiceEntityResponse>;
+  createSocialMediaPlatform?: Maybe<SocialMediaPlatformEntityResponse>;
   createTeamMember?: Maybe<TeamMemberEntityResponse>;
   createTestimonial?: Maybe<TestimonialEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
@@ -463,7 +414,6 @@ export type Mutation = {
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   deleteAbout?: Maybe<AboutEntityResponse>;
-  deleteAboutWhy?: Maybe<AboutWhyEntityResponse>;
   deleteContact?: Maybe<ContactEntityResponse>;
   deleteGallery?: Maybe<GalleryEntityResponse>;
   deleteHeader?: Maybe<HeaderEntityResponse>;
@@ -471,6 +421,7 @@ export type Mutation = {
   deletePortfolioArea?: Maybe<PortfolioAreaEntityResponse>;
   deleteService?: Maybe<ServiceEntityResponse>;
   deleteServiceArea?: Maybe<ServiceAreaEntityResponse>;
+  deleteSocialMediaPlatform?: Maybe<SocialMediaPlatformEntityResponse>;
   deleteTeamArea?: Maybe<TeamAreaEntityResponse>;
   deleteTeamMember?: Maybe<TeamMemberEntityResponse>;
   deleteTestimonial?: Maybe<TestimonialEntityResponse>;
@@ -493,7 +444,6 @@ export type Mutation = {
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   updateAbout?: Maybe<AboutEntityResponse>;
-  updateAboutWhy?: Maybe<AboutWhyEntityResponse>;
   updateContact?: Maybe<ContactEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updateGallery?: Maybe<GalleryEntityResponse>;
@@ -502,6 +452,7 @@ export type Mutation = {
   updatePortfolioArea?: Maybe<PortfolioAreaEntityResponse>;
   updateService?: Maybe<ServiceEntityResponse>;
   updateServiceArea?: Maybe<ServiceAreaEntityResponse>;
+  updateSocialMediaPlatform?: Maybe<SocialMediaPlatformEntityResponse>;
   updateTeamArea?: Maybe<TeamAreaEntityResponse>;
   updateTeamMember?: Maybe<TeamMemberEntityResponse>;
   updateTestimonial?: Maybe<TestimonialEntityResponse>;
@@ -521,10 +472,6 @@ export type MutationChangePasswordArgs = {
   passwordConfirmation: Scalars['String']['input'];
 };
 
-export type MutationCreateAboutWhyArgs = {
-  data: AboutWhyInput;
-};
-
 export type MutationCreateGalleryArgs = {
   data: GalleryInput;
 };
@@ -535,6 +482,10 @@ export type MutationCreatePortfolioArgs = {
 
 export type MutationCreateServiceArgs = {
   data: ServiceInput;
+};
+
+export type MutationCreateSocialMediaPlatformArgs = {
+  data: SocialMediaPlatformInput;
 };
 
 export type MutationCreateTeamMemberArgs = {
@@ -561,10 +512,6 @@ export type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput;
 };
 
-export type MutationDeleteAboutWhyArgs = {
-  id: Scalars['ID']['input'];
-};
-
 export type MutationDeleteGalleryArgs = {
   id: Scalars['ID']['input'];
 };
@@ -574,6 +521,10 @@ export type MutationDeletePortfolioArgs = {
 };
 
 export type MutationDeleteServiceArgs = {
+  id: Scalars['ID']['input'];
+};
+
+export type MutationDeleteSocialMediaPlatformArgs = {
   id: Scalars['ID']['input'];
 };
 
@@ -638,11 +589,6 @@ export type MutationUpdateAboutArgs = {
   data: AboutInput;
 };
 
-export type MutationUpdateAboutWhyArgs = {
-  data: AboutWhyInput;
-  id: Scalars['ID']['input'];
-};
-
 export type MutationUpdateContactArgs = {
   data: ContactInput;
 };
@@ -677,6 +623,11 @@ export type MutationUpdateServiceArgs = {
 
 export type MutationUpdateServiceAreaArgs = {
   data: ServiceAreaInput;
+};
+
+export type MutationUpdateSocialMediaPlatformArgs = {
+  data: SocialMediaPlatformInput;
+  id: Scalars['ID']['input'];
 };
 
 export type MutationUpdateTeamAreaArgs = {
@@ -833,8 +784,6 @@ export enum PublicationState {
 export type Query = {
   __typename?: 'Query';
   about?: Maybe<AboutEntityResponse>;
-  aboutWhy?: Maybe<AboutWhyEntityResponse>;
-  aboutWhys?: Maybe<AboutWhyEntityResponseCollection>;
   contact?: Maybe<ContactEntityResponse>;
   galleries?: Maybe<GalleryEntityResponseCollection>;
   gallery?: Maybe<GalleryEntityResponse>;
@@ -848,6 +797,8 @@ export type Query = {
   service?: Maybe<ServiceEntityResponse>;
   serviceArea?: Maybe<ServiceAreaEntityResponse>;
   services?: Maybe<ServiceEntityResponseCollection>;
+  socialMediaPlatform?: Maybe<SocialMediaPlatformEntityResponse>;
+  socialMediaPlatforms?: Maybe<SocialMediaPlatformEntityResponseCollection>;
   teamArea?: Maybe<TeamAreaEntityResponse>;
   teamMember?: Maybe<TeamMemberEntityResponse>;
   teamMembers?: Maybe<TeamMemberEntityResponseCollection>;
@@ -866,17 +817,6 @@ export type Query = {
 
 export type QueryAboutArgs = {
   publicationState?: InputMaybe<PublicationState>;
-};
-
-export type QueryAboutWhyArgs = {
-  id?: InputMaybe<Scalars['ID']['input']>;
-};
-
-export type QueryAboutWhysArgs = {
-  filters?: InputMaybe<AboutWhyFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type QueryContactArgs = {
@@ -933,6 +873,17 @@ export type QueryServiceAreaArgs = {
 
 export type QueryServicesArgs = {
   filters?: InputMaybe<ServiceFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type QuerySocialMediaPlatformArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type QuerySocialMediaPlatformsArgs = {
+  filters?: InputMaybe<SocialMediaPlatformFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1016,6 +967,7 @@ export type ResponseCollectionMeta = {
 export type Service = {
   __typename?: 'Service';
   Icon: Enum_Service_Icon;
+  Image: UploadFileEntityResponse;
   Name: Scalars['String']['output'];
   Text: Scalars['String']['output'];
   createdAt?: Maybe<Scalars['DateTime']['output']>;
@@ -1090,6 +1042,7 @@ export type ServiceFiltersInput = {
 
 export type ServiceInput = {
   Icon?: InputMaybe<Enum_Service_Icon>;
+  Image?: InputMaybe<Scalars['ID']['input']>;
   Name?: InputMaybe<Scalars['String']['input']>;
   Text?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1098,6 +1051,52 @@ export type ServiceInput = {
 export type ServiceRelationResponseCollection = {
   __typename?: 'ServiceRelationResponseCollection';
   data: Array<ServiceEntity>;
+};
+
+export type SocialMediaPlatform = {
+  __typename?: 'SocialMediaPlatform';
+  Image: UploadFileEntityResponse;
+  Type: Enum_Socialmediaplatform_Type;
+  Url: Scalars['String']['output'];
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type SocialMediaPlatformEntity = {
+  __typename?: 'SocialMediaPlatformEntity';
+  attributes?: Maybe<SocialMediaPlatform>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type SocialMediaPlatformEntityResponse = {
+  __typename?: 'SocialMediaPlatformEntityResponse';
+  data?: Maybe<SocialMediaPlatformEntity>;
+};
+
+export type SocialMediaPlatformEntityResponseCollection = {
+  __typename?: 'SocialMediaPlatformEntityResponseCollection';
+  data: Array<SocialMediaPlatformEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type SocialMediaPlatformFiltersInput = {
+  Type?: InputMaybe<StringFilterInput>;
+  Url?: InputMaybe<StringFilterInput>;
+  and?: InputMaybe<Array<InputMaybe<SocialMediaPlatformFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<SocialMediaPlatformFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<SocialMediaPlatformFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type SocialMediaPlatformInput = {
+  Image?: InputMaybe<Scalars['ID']['input']>;
+  Type?: InputMaybe<Enum_Socialmediaplatform_Type>;
+  Url?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type StringFilterInput = {

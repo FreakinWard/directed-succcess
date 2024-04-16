@@ -2,9 +2,9 @@ import Image from 'next/image';
 
 import useAbout from '../../hooks/useAbout';
 
-const WhyList = ({ whys }) => {
-  return <ul>{whys?.map((why, index) => <li key={`${why}-${index}`}>{why}</li>)}</ul>;
-};
+const ParagraphSection = ({ children }) => (
+  <div className="col-lg-6 col-sm-6 col-xs-12">{children}</div>
+);
 
 export default function About() {
   const { data: about } = useAbout();
@@ -25,17 +25,11 @@ export default function About() {
           </div>
           <div className="col-xs-12 col-md-6">
             <div className="about-text">
-              <h2>About Us</h2>
-              <h3>Why Choose Us?</h3>
+              <h2>{about.title}</h2>
+              {about.secondaryTitle ? <h3>{about.secondaryTitle}</h3> : null}
               <div className="list-style">
-                <div className="col-lg-6 col-sm-6 col-xs-12">{about?.paragraph}</div>
-                <hr />
-                <div className="col-lg-6 col-sm-6 col-xs-12">
-                  <WhyList whys={about?.whys} />
-                </div>
-                <div className="col-lg-6 col-sm-6 col-xs-12">
-                  <WhyList whys={about?.whys2} />
-                </div>
+                <ParagraphSection>{about?.paragraph}</ParagraphSection>
+                <ParagraphSection>{about?.secondaryParagraph}</ParagraphSection>
               </div>
             </div>
           </div>

@@ -14,9 +14,18 @@ export const graphQuery = gql`
             data {
               id
               attributes {
-                Icon
                 Name
                 Text
+                Image {
+                  data {
+                    attributes {
+                      url
+                      alternativeText
+                      width
+                      height
+                    }
+                  }
+                }
               }
             }
           }
@@ -35,15 +44,15 @@ const adapter = data => {
     const root = service.attributes;
 
     const id = service.id;
-    const icon = root.Icon;
     const name = root.Name;
     const text = root.Text;
+    const image = root.Image.data.attributes;
 
     return {
       id,
-      icon,
       name,
       text,
+      image,
     };
   });
 

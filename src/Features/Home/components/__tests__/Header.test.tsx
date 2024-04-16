@@ -10,13 +10,22 @@ describe('Header', () => {
 
   const tree = <Header />;
 
-  it('should render page title from cms', async () => {
+  it('should render title from cms', async () => {
     // arrange
     // act
     render(tree, { wrapper });
 
     // assert
     await screen.findByText(seedHeader.data.title);
+  });
+
+  it('should render secondary title from cms', async () => {
+    // arrange
+    // act
+    render(tree, { wrapper });
+
+    // assert
+    await screen.findByText(seedHeader.data.secondaryTitle);
   });
 
   it('should render header title and paragraph from cms', async () => {

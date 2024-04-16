@@ -41,25 +41,12 @@ describe('About', () => {
     screen.getByText(seedAbout.data.paragraph);
   });
 
-  it('should render why list from cms', async () => {
+  it('should render secondary paragraph text from cms', async () => {
     // arrange
     // act
     render(tree, { wrapper });
 
     // assert
-    seedAbout.data.whys.forEach(item => {
-      screen.getByText(item);
-    });
-  });
-
-  it('should render why2 list from cms', async () => {
-    // arrange
-    // act
-    render(tree, { wrapper });
-
-    // assert
-    seedAbout.data.whys2.forEach(item => {
-      screen.getByText(item);
-    });
+    screen.getByText(seedAbout.data.secondaryParagraph);
   });
 });

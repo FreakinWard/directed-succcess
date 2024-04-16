@@ -5,6 +5,7 @@ import seedContact from '@/core/msw/seed/seedContact';
 import seedHeader from '@/core/msw/seed/seedHeader';
 import seedPortfolioArea from '@/core/msw/seed/seedPortfolioArea';
 import seedServiceArea from '@/core/msw/seed/seedServiceArea';
+import seedSocialMediaPlatforms from '@/core/msw/seed/seedSocialMediaPlatforms';
 import seedTeamArea from '@/core/msw/seed/seedTeamArea';
 import seedTestimonialArea from '@/core/msw/seed/seedTestimonialArea';
 import { SeedGraphQLQuery } from '@/types/seed/SeedGraphQLQuery';
@@ -22,16 +23,15 @@ const mockRequestGet = (url, responseData, statusCode = 200) => {
   return rest.get(url, mockHandler(responseData, statusCode));
 };
 
-const mockGraphQL = <T, U>(
-  { queryName, data, graphqlResponse }: SeedGraphQLQuery<T, U>,
-  url = `${process.env.STRAPI_API}/graphql`
+export const mockGraphQL = <T, U>(
+  { queryName, graphqlResponse }: SeedGraphQLQuery<T, U>,
+  url = `*/graphql`
 ) => {
   const resource = graphql.link(url);
 
-  const ctxData = graphqlResponse ?? data;
-
-  return resource.query(queryName, (_req, res, ctx) => res(ctx.data(ctxData)));
+  return resource.query(queryName, (_req, res, ctx) => res(ctx.data(graphqlResponse)));
 };
+const mockPassThroughGet = url => rest.get(url, req => req.passthrough());
 
 export default [
   // auth
@@ -47,4 +47,20 @@ export default [
   mockGraphQL(seedTestimonialArea),
   mockGraphQL(seedPortfolioArea),
   mockGraphQL(seedTeamArea),
+  mockGraphQL(seedSocialMediaPlatforms),
+
+  // nextjs dev
+  mockPassThroughGet('/_next/static/*'),
+  mockPassThroughGet('/_next/image*'),
+  mockPassThroughGet('/_next/data/*'),
+  mockPassThroughGet('/__nextjs_original-stack-frame'),
+  mockPassThroughGet('/vercel.svg'),
+  mockPassThroughGet('/flight-select'),
+  mockPassThroughGet('/favicon.ico'),
+  mockPassThroughGet('*chrome-extension*'),
+  mockPassThroughGet('*fonts.googleapis.*'),
+  mockPassThroughGet('*fonts.gstatic.*'),
+  mockPassThroughGet('/fonts/*'),
+  mockPassThroughGet('/img/*'),
+  mockPassThroughGet(`${process.env.REMOTE_IMAGE_HOST}/*`),
 ];

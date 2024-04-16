@@ -1,3 +1,5 @@
+import { Enum_Socialmediaplatform_Type } from '@/types/strapi/__generated__/graphql';
+
 export interface ImageData {
   url: string;
   alternateText: string;
@@ -7,14 +9,17 @@ export interface ImageData {
 
 export interface AboutResponse {
   paragraph: string;
+  secondaryParagraph: string;
+  title: string;
+  secondaryTitle?: string;
   image: ImageData;
-  whys: string[];
-  whys2: string[];
 }
 
 export interface HeaderData {
-  paragraph: string;
   title: string;
+  secondaryTitle?: string;
+  paragraph: string;
+  backgroundImage: ImageData;
 }
 
 export interface ServiceAreaData {
@@ -22,9 +27,9 @@ export interface ServiceAreaData {
   paragraph: string;
   services: {
     id: number;
-    icon: string;
     name: string;
     text: string;
+    image: ImageData;
   }[];
 }
 
@@ -69,4 +74,11 @@ export interface ContactData {
   facebook: string;
   twitter: string;
   youtube: string;
+}
+
+export interface SocialMediaPlatformData {
+  id: number;
+  type: Enum_Socialmediaplatform_Type;
+  url: string;
+  image: ImageData;
 }

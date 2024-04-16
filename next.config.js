@@ -14,10 +14,14 @@ module.exports = withBundleAnalyzer({
     ciBuildNumber: packageJson.buildNumber,
     ciBuildJobUrl: packageJson.buildJobUrl,
     APPLICATIONINSIGHTS_CONNECTION_STRING: process.env.APPLICATIONINSIGHTS_CONNECTION_STRING,
-    STRAPI_API: process.env.STRAPI_API ?? 'not0set',
+    STRAPI_API: process.env.STRAPI_API ?? 'notset',
   },
   output: 'standalone',
   swcMinify: true,
+  generateBuildId: async () => {
+    // This could be anything, using the latest git hash
+    return packageJson.buildNumber;
+  },
   eslint: {
     ignoreDuringBuilds: isProduction,
   },
@@ -34,4 +38,23 @@ module.exports = withBundleAnalyzer({
       },
     ],
   },
+
+  // async headers() {
+  //   if (process.env.NODE_ENV !== 'production') {
+  //     return [];
+  //   }
+  //
+  //   return [
+  //     {
+  //       source: '/:all*(css|js|gif|svg|jpg|jpeg|png|woff|woff2)',
+  //       locale: false,
+  //       headers: [
+  //         {
+  //           key: 'Cache-Control',
+  //           value: 'public, max-age=31536000',
+  //         },
+  //       ],
+  //     },
+  //   ];
+  // },
 });

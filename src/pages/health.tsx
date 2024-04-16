@@ -18,7 +18,7 @@ export function getStaticProps() {
       health: healthData,
       fallback: true,
     },
-    revalidate: 60,
+    // revalidate: 60,
   };
 }
 

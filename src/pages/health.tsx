@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import pascalCase from 'pascalcase';
 
-import { useTelemetry } from '@/components/AppTelemetry/TelemetryProvider';
-
 export function getStaticProps() {
   const healthData = {
     name: process.env.appName,
@@ -52,16 +50,9 @@ const LabelTimeItem = ({ children, label }) => (
 );
 
 export default function Health({ health }) {
-  const telemetry = useTelemetry();
-
-  const handleClick = () => {
-    telemetry.trackEvent({ name: 'manual-event' });
-  };
-
   return (
     <div>
       <h2>Health Check</h2>
-      <button onClick={handleClick}>Manual Event</button>
       {Object.keys(health)?.map((prop, index) => {
         if (prop === 'buildJobUrl')
           return (

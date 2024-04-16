@@ -3,7 +3,7 @@ import { NextRouter } from 'next/router';
 import { Session } from 'next-auth';
 import { ReactNode } from 'react';
 
-import { TelemetryProvider } from '@/components/AppTelemetry/TelemetryProvider';
+import TelemetryProvider from '@/components/AppTelemetry/TelemetryProvider';
 
 import QueryCache from './QueryCache';
 

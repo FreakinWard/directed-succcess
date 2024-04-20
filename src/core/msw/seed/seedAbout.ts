@@ -34,10 +34,10 @@ const graphqlResponse: Query = {
   },
 };
 
-const seedAbout = {
+const seedAbout: SeedGraphQLQuery<Query, AboutResponse> = {
   data,
   queryName: 'About',
   graphqlResponse,
-} as SeedGraphQLQuery<Query, AboutResponse>;
+};
 
 export default seedAbout;

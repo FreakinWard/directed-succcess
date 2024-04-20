@@ -15,6 +15,7 @@ module.exports = withBundleAnalyzer({
     ciBuildJobUrl: packageJson.buildJobUrl,
     APPLICATIONINSIGHTS_CONNECTION_STRING: process.env.APPLICATIONINSIGHTS_CONNECTION_STRING,
     STRAPI_API: process.env.STRAPI_API ?? 'notset',
+    GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
   },
   output: 'standalone',
   swcMinify: true,

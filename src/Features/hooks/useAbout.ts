@@ -9,9 +9,8 @@ export const graphQuery = gql`
       data {
         attributes {
           Paragraph
-          SecondaryParagraph
-          Title
           SecondaryTitle
+          SecondaryParagraph
           Image {
             data {
               attributes {

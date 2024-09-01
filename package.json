@@ -1,6 +1,6 @@
 {
-  "name": "nextjs-boilerplate",
-  "version": "0.1.0",
+  "name": "directed-success",
+  "version": "1.0.0",
   "buildNumber": "set-in-ci-pipeline",
   "buildJobUrl": "set-in-ci-pipeline",
   "private": true,

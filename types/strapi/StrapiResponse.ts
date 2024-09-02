@@ -68,12 +68,9 @@ export interface TeamAreaData {
 export interface ContactData {
   title: string;
   paragraph: string;
-  address: string;
+  address?: string;
   phone: string;
   email: string;
-  facebook: string;
-  twitter: string;
-  youtube: string;
 }
 
 export interface SocialMediaPlatformData {

@@ -84,7 +84,7 @@ export type BooleanFilterInput = {
 
 export type Contact = {
   __typename?: 'Contact';
-  Address: Scalars['String']['output'];
+  Address?: Maybe<Scalars['String']['output']>;
   Email: Scalars['String']['output'];
   Paragraph: Scalars['String']['output'];
   Phone: Scalars['String']['output'];

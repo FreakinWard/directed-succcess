@@ -2,16 +2,13 @@ import { SeedGraphQLQuery } from '@/types/seed/SeedGraphQLQuery';
 import { ContactEntityResponse } from '@/types/strapi/__generated__/graphql';
 import { ContactData } from '@/types/strapi/StrapiResponse';
 
-const data = {
+const data: ContactData = {
   title: 'title-value',
   paragraph: 'paragraph-value',
   address: 'address-value',
   phone: 'phone-value',
   email: 'email-value',
-  facebook: 'facebook-value',
-  twitter: 'twitter-value',
-  youtube: 'youtube-value',
-} as ContactData;
+};
 
 const graphqlResponse = {
   contact: {
@@ -22,9 +19,6 @@ const graphqlResponse = {
         Address: data.address,
         Phone: data.phone,
         Email: data.email,
-        Facebook: data.facebook,
-        Twitter: data.twitter,
-        Youtube: data.youtube,
       },
     },
   },

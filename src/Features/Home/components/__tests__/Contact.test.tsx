@@ -1,9 +1,10 @@
 import { queryByAttribute, render, screen } from '@testing-library/react';
 
 import seedContact from '@/core/msw/seed/seedContact';
+import seedSocialMediaPlatforms from '@/core/msw/seed/seedSocialMediaPlatforms';
 import { AppWrapper as wrapper, mswMock } from '@/core/test.utils';
 
-import Contact from '../Contact';
+import Contact from '../Contact/Contact';
 
 describe('Contact', () => {
   mswMock();
@@ -43,8 +44,9 @@ describe('Contact', () => {
     // assert
     await screen.findByText(seedContact.data.title);
 
-    getByHref(dom.container, seedContact.data.facebook);
-    getByHref(dom.container, seedContact.data.twitter);
-    getByHref(dom.container, seedContact.data.youtube);
+    seedSocialMediaPlatforms.data.forEach(socialMediaPlatform => {
+      const title = socialMediaPlatform.type;
+      getByHref(dom.container, title);
+    });
   });
 });

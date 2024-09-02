@@ -36,6 +36,11 @@ module.exports = withBundleAnalyzer({
         hostname: process.env.REMOTE_IMAGE_HOST ?? 'cmsstrapist.blob.core.windows.net',
         port: process.env.REMOTE_IMAGE_PORT ?? '',
       },
+      {
+        protocol: 'https',
+        hostname: 'strapi-cdn.com',
+        port: '',
+      },
     ],
   },
 

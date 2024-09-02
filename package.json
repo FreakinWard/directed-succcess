@@ -6,8 +6,7 @@
   "private": true,
   "description": "This repo serves at a boilerplate to help stand up a new nextjs app",
   "engines": {
-    "node": "=18.17.x",
-    "npm": "=9"
+    "node": "=18"
   },
   "scripts": {
     "prepare": "husky install",
@@ -55,6 +54,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.23.7",
+    "@graphql-codegen/cli": "5.0.2",
+    "@graphql-codegen/client-preset": "4.2.5",
     "@next/eslint-plugin-next": "^14.1.0",
     "@testing-library/cypress": "^10.0.1",
     "@testing-library/jest-dom": "^6.4.2",
@@ -80,8 +81,6 @@
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-simple-import-sort": "^10.0.0",
-    "@graphql-codegen/cli": "5.0.2",
-    "@graphql-codegen/client-preset": "4.2.5",
     "http": "0.0.1-security",
     "husky": "^8.0.3",
     "identity-obj-proxy": "^3.0.0",

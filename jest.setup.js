@@ -1,6 +1,16 @@
 import '@testing-library/jest-dom';
 import 'whatwg-fetch';
 
+jest.mock('@vercel/analytics/react', () => ({
+  Analytics: jest.fn(),
+}));
+jest.mock('@vercel/speed-insights/next', () => ({
+  SpeedInsights: jest.fn(),
+}));
+jest.mock('@next/third-parties/google', () => ({
+  GoogleAnalytics: jest.fn(),
+}));
+
 const originalEnvVariables = process.env;
 
 beforeAll(() => {

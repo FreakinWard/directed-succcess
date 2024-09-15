@@ -9,9 +9,9 @@ const NavigationLink = ({ data }) => (
 );
 
 export default function Navigation() {
-  const { data: navigation } = useNavigation();
+  const { activeNavigations } = useNavigation();
 
-  if (!navigation) return null;
+  if (activeNavigations?.length <= 1) return null;
 
   return (
     <nav id="menu" className="navbar navbar-default navbar-fixed-top">
@@ -29,10 +29,10 @@ export default function Navigation() {
         </div>
 
         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul className="nav navbar-nav navbar-right">
-            {navigation
-              ?.filter(item => item.isVisible)
-              .map(item => <NavigationLink key={item.title} data={item} />)}
+          <ul className="nav navbar-nav navbar-right" aria-label="navigation">
+            {activeNavigations.map(item => (
+              <NavigationLink key={item.title} data={item} />
+            ))}
           </ul>
         </div>
       </div>

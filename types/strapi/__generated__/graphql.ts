@@ -84,7 +84,7 @@ export type BooleanFilterInput = {
 
 export type Contact = {
   __typename?: 'Contact';
-  Address: Scalars['String']['output'];
+  Address?: Maybe<Scalars['String']['output']>;
   Email: Scalars['String']['output'];
   Paragraph: Scalars['String']['output'];
   Phone: Scalars['String']['output'];
@@ -138,15 +138,6 @@ export type DateTimeFilterInput = {
   or?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   startsWith?: InputMaybe<Scalars['DateTime']['input']>;
 };
-
-export enum Enum_Service_Icon {
-  CartArrowDown = 'CartArrowDown',
-  CloudDownload = 'CloudDownload',
-  Language = 'Language',
-  PieChart = 'PieChart',
-  Plane = 'Plane',
-  WordPress = 'WordPress',
-}
 
 export enum Enum_Socialmediaplatform_Type {
   Discord = 'Discord',
@@ -966,7 +957,6 @@ export type ResponseCollectionMeta = {
 
 export type Service = {
   __typename?: 'Service';
-  Icon: Enum_Service_Icon;
   Image: UploadFileEntityResponse;
   Name: Scalars['String']['output'];
   Text: Scalars['String']['output'];
@@ -1028,7 +1018,6 @@ export type ServiceEntityResponseCollection = {
 };
 
 export type ServiceFiltersInput = {
-  Icon?: InputMaybe<StringFilterInput>;
   Name?: InputMaybe<StringFilterInput>;
   Text?: InputMaybe<StringFilterInput>;
   and?: InputMaybe<Array<InputMaybe<ServiceFiltersInput>>>;
@@ -1041,7 +1030,6 @@ export type ServiceFiltersInput = {
 };
 
 export type ServiceInput = {
-  Icon?: InputMaybe<Enum_Service_Icon>;
   Image?: InputMaybe<Scalars['ID']['input']>;
   Name?: InputMaybe<Scalars['String']['input']>;
   Text?: InputMaybe<Scalars['String']['input']>;

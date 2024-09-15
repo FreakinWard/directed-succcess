@@ -63,4 +63,5 @@ export default [
   mockPassThroughGet('/fonts/*'),
   mockPassThroughGet('/img/*'),
   mockPassThroughGet(`${process.env.REMOTE_IMAGE_HOST}/*`),
+  mockPassThroughGet(`strapi-cdn.com/*`),
 ];

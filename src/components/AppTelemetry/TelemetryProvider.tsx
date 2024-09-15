@@ -16,8 +16,6 @@ export default function TelemetryProvider({ children }: Props) {
       {children}
       <Analytics />
       <SpeedInsights />
-      {/*<GoogleAnalytics gaId="G-K5VLE6725B" />*/}
-      {/*<GoogleAnalytics gaId="G-MHLPM0VEBS" />*/}
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID} />
     </>
   );

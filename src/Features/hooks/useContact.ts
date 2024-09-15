@@ -27,19 +27,13 @@ const adapter = data => {
   const phone = root.Phone;
   const address = root.Address;
   const email = root.Email;
-  const facebook = root.Facebook;
-  const twitter = root.Twitter;
-  const youtube = root.Youtube;
 
   return {
     title,
     paragraph,
-    phone,
     address,
+    phone,
     email,
-    facebook,
-    twitter,
-    youtube,
   };
 };
 

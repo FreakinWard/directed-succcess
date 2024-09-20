@@ -2,13 +2,13 @@ import { SeedGraphQLQuery } from '@/types/seed/SeedGraphQLQuery';
 import { PortfolioAreaEntity } from '@/types/strapi/__generated__/graphql';
 import { PortfolioAreaData } from '@/types/strapi/StrapiResponse';
 
-const data = {
-  title: 'title-value',
+const data: PortfolioAreaData = {
+  title: 'Portfolio Area Title',
   paragraph: 'paragraph-value',
   portfolios: [
     {
       id: 1,
-      title: 'title-name',
+      title: 'Portfolio Title',
       smallImage: {
         url: 'https://strapi-cdn.com/small-image.png',
         alternateText: 'small-image-alternate-text-value',
@@ -23,7 +23,7 @@ const data = {
       },
     },
   ],
-} as PortfolioAreaData;
+};
 
 const dataToImage = imageData => ({
   data: {

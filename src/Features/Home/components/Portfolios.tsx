@@ -1,7 +1,7 @@
 import usePortfolioArea from '../../hooks/usePortfolioArea';
 import ImageLink from './ImageLink';
 
-export default function Portfolio() {
+export default function Portfolios() {
   const { data: portfolioArea } = usePortfolioArea();
 
   if (!portfolioArea) return null;

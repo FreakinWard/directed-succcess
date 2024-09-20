@@ -15,6 +15,9 @@ export const graphQuery = gql`
               id
               attributes {
                 Title
+                Location
+                DescriptionShort
+                DescriptionLong
                 SmallImage {
                   data {
                     attributes {

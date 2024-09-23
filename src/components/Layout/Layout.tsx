@@ -1,16 +1,11 @@
 import { ReactNode } from 'react';
 
-import Footer from './Footer';
+import Page from '@/components/Main/components/Page';
 
 interface Props {
   children: ReactNode | Array<ReactNode>;
 }
 
 export default function Layout({ children }: Props) {
-  return (
-    <main>
-      {children}
-      <Footer />
-    </main>
-  );
+  return <Page>{children}</Page>;
 }

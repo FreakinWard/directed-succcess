@@ -1,7 +1,4 @@
 /* istanbul ignore file */ // TODO: determine a way to test
-import '../../styles/index.css';
-import '../../styles/app.css';
-
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { Session } from 'next-auth';
@@ -22,17 +19,20 @@ interface Props extends AppProps {
 
 export default function App({ Component, pageProps, router }: Props) {
   return (
-    <AppState
-      pageTitle={Component.title}
-      requireAuth={Component.requireAuth}
-      router={router}
-      session={pageProps.session}
-      dehydratedState={pageProps.dehydratedState}
-    >
-      <Layout>
-        <AppHead title={Component.title} />
-        <Component {...pageProps} />
-      </Layout>
-    </AppState>
+    <>
+      <AppHead title={Component.title} />
+
+      <AppState
+        pageTitle={Component.title}
+        requireAuth={Component.requireAuth}
+        router={router}
+        session={pageProps.session}
+        dehydratedState={pageProps.dehydratedState}
+      >
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </AppState>
+    </>
   );
 }

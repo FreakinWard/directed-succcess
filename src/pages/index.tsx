@@ -2,7 +2,7 @@ import { dehydrate, DehydratedState, QueryClient } from '@tanstack/react-query';
 
 import graphQLRequest from '@/core/utils/graphQLRequest';
 
-import HomePage from '../Features/Home/';
+import Home2 from '../Features/Home/Home2';
 import { graphQuery as aboutQuery } from '../Features/hooks/useAbout';
 import { graphQuery as contactQuery } from '../Features/hooks/useContact';
 import { graphQuery as headerQuery } from '../Features/hooks/useHeader';
@@ -17,7 +17,7 @@ interface Props {
     dehydratedState: DehydratedState;
     fallback: boolean;
   };
-  revalidate: number | boolean;
+  revalidate?: number | boolean;
 }
 
 const prefetchConfig = (queryName, query) => ({
@@ -49,7 +49,8 @@ export async function getStaticProps(): Promise<Props> {
 }
 
 export default function Home() {
-  return <HomePage />;
+  // return <HomePage />;
+  return <Home2 />;
 }
 
 Home.title = 'Home';

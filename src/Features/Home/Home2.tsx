@@ -4,8 +4,11 @@ import Main from 'components/Main';
 
 import Container from '@/components/Container';
 
+import About from './components/About';
 import Hero from './components/Hero';
+import Portfolio from './components/Portfolio';
 import Services from './components/Services';
+import Testimonials from './components/Testimonials';
 
 export default function Home2() {
   const theme = useTheme();
@@ -15,7 +18,7 @@ export default function Home2() {
       <Main bgcolor={'background.paper'}>
         <Hero />
         <Container>
-          <Services />
+          <About />
         </Container>
         <Box
           sx={{
@@ -27,9 +30,15 @@ export default function Home2() {
             position: 'relative',
           }}
         >
-          <Container maxWidth={600}>{/*<QuickStart />*/}</Container>
-          <Container>{/*<Features />*/}</Container>
-          <Container>{/*<Benefits />*/}</Container>
+          <Container>
+            <Services />
+          </Container>
+          <Container>
+            <Portfolio />
+          </Container>
+          <Container>
+            <Testimonials />
+          </Container>
           <Box
             component={'svg'}
             preserveAspectRatio="none"

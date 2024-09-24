@@ -5,6 +5,8 @@ import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Container from 'components/Container';
 
+import useHeader from '../../../hooks/useHeader';
+
 const images = [
   {
     group: [
@@ -57,6 +59,8 @@ const images = [
 ];
 
 export default function Hero() {
+  const { data: header } = useHeader();
+
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true,
@@ -77,20 +81,20 @@ export default function Hero() {
         <Container>
           <Box maxWidth={{ xs: 1, sm: '50%' }}>
             <Typography
-              variant="h2"
+              variant="h3"
               color="text.primary"
               gutterBottom
               sx={{
                 fontWeight: 700,
               }}
             >
-              Turn your ideas
+              Strong leadership
               <br />
-              into{' '}
+              is the cornerstone of your{' '}
               <Typography
-                color={'primary'}
-                component={'span'}
-                variant={'inherit'}
+                color="primary"
+                component="span"
+                variant="inherit"
                 sx={{
                   background: `linear-gradient(180deg, transparent 82%, ${alpha(
                     theme.palette.secondary.main,
@@ -98,12 +102,11 @@ export default function Hero() {
                   )} 0%)`,
                 }}
               >
-                success.
+                organization.
               </Typography>
             </Typography>
             <Typography variant="h6" component="p" color="text.secondary" sx={{ fontWeight: 400 }}>
-              theFront will make your product look modern and professional while saving you precious
-              time.
+              {header?.paragraph}
             </Typography>
             <Box
               display="flex"

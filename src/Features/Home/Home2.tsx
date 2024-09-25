@@ -8,7 +8,7 @@ import About from './components/About';
 import Hero from './components/Hero';
 import Portfolio from './components/Portfolio';
 import Services from './components/Services';
-import Testimonials from './components/Testimonials';
+import Team from './components/Team';
 
 export default function Home2() {
   const theme = useTheme();
@@ -37,7 +37,7 @@ export default function Home2() {
             <Portfolio />
           </Container>
           <Container>
-            <Testimonials />
+            <Team />
           </Container>
           <Box
             component={'svg'}

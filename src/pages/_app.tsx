@@ -1,4 +1,6 @@
 /* istanbul ignore file */ // TODO: determine a way to test
+import 'aos/dist/aos.css';
+
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { Session } from 'next-auth';

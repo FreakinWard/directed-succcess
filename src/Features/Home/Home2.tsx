@@ -33,12 +33,6 @@ export default function Home2() {
           <Container>
             <Services />
           </Container>
-          <Container>
-            <Portfolio />
-          </Container>
-          <Container>
-            <Team />
-          </Container>
           <Box
             component={'svg'}
             preserveAspectRatio="none"
@@ -56,6 +50,12 @@ export default function Home2() {
               d="M0,0c0,0,934.4,93.4,1920,0v100.1H0L0,0z"
             ></path>
           </Box>
+          <Container>
+            <Portfolio />
+          </Container>
+          <Container>
+            <Team />
+          </Container>
         </Box>
         <Container>{/*<GetStarted />*/}</Container>
       </Main>

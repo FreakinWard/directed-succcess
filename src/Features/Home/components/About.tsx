@@ -4,8 +4,8 @@ import Image from 'next/image';
 
 import useAbout from '../../hooks/useAbout';
 
-const ParagraphSection = ({ children }) => (
-  <Grid item xs={6}>
+const ParagraphSection = ({ children, ...rest }) => (
+  <Grid item xs={6} {...rest} data-aos={'fade-up'} data-aos-offset={100} data-aos-duration={600}>
     {children}
   </Grid>
 );
@@ -44,6 +44,8 @@ export default function About() {
         spacing={2}
         xs={12}
         md={6}
+        justifyContent="flex-start"
+        alignItems="flex-start"
         sx={{
           justifyContent: 'flex-start',
           alignItems: 'flex-start',
@@ -52,8 +54,10 @@ export default function About() {
         <Grid item xs={12}>
           {about.secondaryTitle ? <h3>{about.secondaryTitle}</h3> : null}
         </Grid>
-        <ParagraphSection>{about?.paragraph}</ParagraphSection>
-        <ParagraphSection>{about?.secondaryParagraph}</ParagraphSection>
+
+        <ParagraphSection data-aos-delay={100}>{about?.paragraph}</ParagraphSection>
+        <ParagraphSection data-aos-delay={200}>{about?.secondaryParagraph}</ParagraphSection>
+        {/*</Box>*/}
       </Grid>
     </Grid>
   );

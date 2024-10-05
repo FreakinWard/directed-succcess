@@ -15,9 +15,6 @@ export default function About() {
 
   if (!about) return null;
 
-  const debug = true;
-  // const debug = false;
-
   return (
     <Grid
       container
@@ -25,7 +22,6 @@ export default function About() {
       justifyContent="center"
       sx={{
         justifyContent: 'center',
-        border: debug ? '1px solid red' : undefined,
       }}
       alignItems="center"
     >
@@ -36,9 +32,6 @@ export default function About() {
         direction="column"
         alignItems="center"
         container
-        sx={{
-          border: debug ? '1px solid red' : undefined,
-        }}
       >
         <Grid item>
           <Typography variant="h2" textAlign="center">
@@ -46,14 +39,7 @@ export default function About() {
           </Typography>
         </Grid>
       </Grid>
-      <Grid
-        item
-        xs={12}
-        md={6}
-        sx={{
-          border: debug ? '1px solid red' : undefined,
-        }}
-      >
+      <Grid item xs={12} md={6}>
         <Image
           src={about?.image.url}
           width={about?.image.width}
@@ -70,7 +56,6 @@ export default function About() {
         sx={{
           justifyContent: 'flex-start',
           alignItems: 'flex-start',
-          border: debug ? '1px solid red' : undefined,
         }}
       >
         <Grid item xs={12}>

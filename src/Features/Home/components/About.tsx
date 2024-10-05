@@ -16,15 +16,7 @@ export default function About() {
   if (!about) return null;
 
   return (
-    <Grid
-      container
-      spacing={2}
-      justifyContent="center"
-      sx={{
-        justifyContent: 'center',
-      }}
-      alignItems="center"
-    >
+    <Grid container spacing={2} justifyContent="center" alignItems="center">
       <Grid
         xs={12}
         spacing={0}
@@ -52,7 +44,6 @@ export default function About() {
         spacing={2}
         xs={12}
         md={6}
-        // direction="row"
         sx={{
           justifyContent: 'flex-start',
           alignItems: 'flex-start',
